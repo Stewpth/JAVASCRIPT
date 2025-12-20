@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>9e Activity</title>
+</head>
+
+<body>
+    <input placeholder="Name" class="input-name" onkeydown="keyEnterDisplayFunction(event);
+    ">
+
+    <button onclick="displayName()">Submit</button>
+
+    <p class="display-name"></p>
+
+    <script>
+        function keyEnterDisplayFunction(event) {
+            if (event.key === 'Enter') {
+                displayName();
+            }
+        }
+
+        function displayName() {
+            const inputValue = document.querySelector('.input-name').value;
+
+            document.querySelector('.display-name').innerHTML = `Your name is: ${inputValue}`;
+        }
+    </script>
+</body>
+
+</html>

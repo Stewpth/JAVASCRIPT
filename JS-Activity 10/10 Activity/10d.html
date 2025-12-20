@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>10d Activity</title>
+    <style>
+        .js-button {
+            background-color: black;
+            color: white;
+            font-weight: bold;
+            padding: 15px 23px;
+            border: none;
+            font-size: 13px;
+            border-radius: 5px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .gaming-btn {
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-weight: bold;
+            padding: 15px 23px;
+            border: none;
+            font-size: 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .is-toggled {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="js-button">Test</button>
+    <button class="gaming-btn" onclick="turnOnOff()">Gaming</button>
+    <script>
+        const buttonCheck = document.querySelector('.js-button');
+
+        console.log(buttonCheck.classList.contains('js-button'));
+
+        function turnOnOff() {
+            const gameButton = document.querySelector('.gaming-btn');
+
+            if (gameButton.classList.contains('is-toggled')) {
+                gameButton.classList.remove('is-toggled');
+            } else {
+                gameButton.classList.add('is-toggled');
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+body {
+  font-family: Arial;
+  font-size: 15px;
+}
+
+input {
+  padding: 6px;
+  font-size: 15px;
+}
+
+.list-todo,
+.todo-container {
+  display: grid;
+  grid-template-columns: 200px 150px 100px;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: center;
+}
+
+.list-todo {
+  margin-bottom: 10px;
+}
+
+button,
+.delete-button {
+  border: none;
+  color: white;
+  background-color: green;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: darkred;
+}

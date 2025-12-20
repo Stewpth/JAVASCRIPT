@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>10f Activity</title>
+    <style>
+        .on-off-btn {
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-weight: bold;
+            padding: 15px 23px;
+            border: none;
+            font-size: 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .is-toggled {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="on-off-btn gaming-btn" onclick="turnOnOff('.gaming-btn')">Gaming</button>
+    <button class="on-off-btn music-btn" onclick="turnOnOff('.music-btn')">Music</button>
+    <button class="on-off-btn tech-btn" onclick="turnOnOff('.tech-btn')">Tech</button>
+
+    <script>
+        function turnOnOff(buttonValue) {
+            const buttonOnOff = document.querySelector(buttonValue);
+
+            if (!buttonOnOff.classList.contains('is-toggled')) {
+                buttonOnOff.classList.add('is-toggled');
+            } else {
+                buttonOnOff.classList.remove('is-toggled');
+            }
+        }
+    </script>
+</body>
+
+</html>

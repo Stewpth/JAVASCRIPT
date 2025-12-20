@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12h Activity</title>
+</head>
+
+<body>
+    <button onclick="addMessage()">Add</button>
+    <button onclick="removeMessage()">Remove</button>
+    <script>
+        let message = 2;
+        document.title = 'App';
+
+        updateTitle();
+
+        let isUpdating = true;
+
+        function updateTitle() {
+            setInterval(function () {
+                if (isUpdating) {
+                    document.title = 'App';
+                } else {
+                    document.title = `(${message}) New Messages`;
+                }
+
+                isUpdating = !isUpdating;
+            }, 1000);
+        }
+
+        function addMessage() {
+            message++;
+        }
+
+        function removeMessage() {
+            message--;
+        }
+    </script>
+</body>
+
+</html>

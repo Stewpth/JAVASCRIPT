@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>9d Activity</title>
+</head>
+
+<body>
+    <input placeholder="Name" class="input-name">
+    <button onclick="displayName()">Submit</button>
+    <p class="display-name"></p>
+
+    <script>
+        function displayName() {
+            const inputValue = document.querySelector('.input-name').value;
+
+            document.querySelector('.display-name').innerHTML = `Your name is: ${inputValue}`;
+        }
+    </script>
+</body>
+
+</html>

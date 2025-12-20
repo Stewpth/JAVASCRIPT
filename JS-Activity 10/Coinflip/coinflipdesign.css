@@ -1,0 +1,82 @@
+body {
+  font-family: arial;
+  background-color: rgb(25, 25, 25);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+}
+
+section.box {
+  height: 550px;
+  width: 300px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-command {
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.result-text {
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.result-pic {
+  display: flex;
+  justify-content: center;
+}
+
+.button-part {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.coin-design {
+  height: 100px;
+  width: 100px;
+}
+
+.design-btn {
+  padding: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 3px solid rgb(187, 137, 0);
+  cursor: pointer;
+}
+
+.score {
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.resetscore-sec {
+  display: flex;
+  justify-content: center;
+}
+
+.reset-btn {
+  border: none;
+  cursor: pointer;
+  background-color: rgb(187, 137, 0);
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  color: white;
+}

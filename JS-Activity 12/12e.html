@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12e Activity</title>
+</head>
+
+<body>
+    <button class="button" onclick="updateButton()">Add to Cart</button>
+
+    <p class="notif-button"></p>
+    <script>
+        function updateButton() {
+            document.querySelector('.notif-button').innerHTML =
+                'Added';
+            setTimeout(function () {
+                document.querySelector('.notif-button').innerHTML = '';
+            }, 2000);
+
+        }
+    </script>
+</body>
+
+</html>

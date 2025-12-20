@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10e Activity</title>
+    <style>
+        .buttons {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(230, 230, 230);
+            color: black;
+            cursor: pointer;
+        }
+
+        .is-toggled {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="js-button1 buttons" onclick="toggleButton('.js-button1')">Gaming</button>
+    <button class="js-button2 buttons" onclick="toggleButton('.js-button2')">Music</button>
+    <button class="js-button3 buttons" onclick="toggleButton('.js-button3')">Tech</button>
+
+    <script>
+        function toggleButton(selector) {
+            const button = document.querySelector(selector);
+
+            if (!button.classList.contains('is-toggled')) {
+                previousToggledButton();
+                button.classList.add('is-toggled');
+            } else {
+                button.classList.remove('is-toggled');
+            }
+        }
+
+        function previousToggledButton() {
+            const button = document.querySelector('.is-toggled');
+
+            if (button) {
+                button.classList.remove('is-toggled');
+            }
+        }
+    </script>
+</body>
+
+</html>

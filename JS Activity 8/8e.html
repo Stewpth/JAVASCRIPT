@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>8e activity</title>
+</head>
+
+<body>
+    <script>
+        function comparePrice(product1, product2) {
+            if (product1.price > product2.price) {
+                return product1.price = product2.price;
+            } else if (product2.price > product1.price) {
+                return product2.price = product1.price;
+            }
+        }
+
+        function isSameProduct(product1, product2) {
+            if (product1.name === product2.name && product1.price === product2.price) {
+                return true;
+            } else if (product1.name !== product2.name && product1.price !== product2.price) {
+                return false;
+            }
+        }
+
+        const product1 = {
+            name: 'shirt',
+            price: 2095,
+            ['delivery-time']: '3 days'
+        }
+
+        const product2 = {
+            name: 'basketball',
+            price: 32,
+            ['delivery-time']: '3 days'
+        }
+
+        /* Calling the comparePrice() will make the same value for both objects.
+        console.log(comparePrice(product1, product2));
+        */
+        console.log(product1);
+        console.log(isSameProduct(product1, product2));
+        console.log('HAPPY BIRTHDAY'.toLowerCase());
+    </script>
+</body>
+
+</html>

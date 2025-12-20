@@ -1,0 +1,9 @@
+8f activity:
+
+How to convert a string to lowercase in javascript
+
+answer: .toLowerCase() method
+
+sample:
+
+console.log('HAPPY BIRTHDAY'.toLowerCase());

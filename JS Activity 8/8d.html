@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>8d activity</title>
+</head>
+
+<body>
+    <script>
+        function comparePrice(product1, product2) {
+            if (product1.price > product2.price) {
+                return product1.price = product2.price;
+            } else if (product2.price > product1.price) {
+                return product2.price = product1.price;
+            }
+        }
+
+        const product1 = {
+            name: 'basketball',
+            price: 2095,
+            ['delivery-time']: '3 days'
+        }
+
+        const product2 = {
+            name: 'basketball',
+            price: 2095,
+            ['delivery-time']: '3 days'
+        }
+
+        product1.price += 500;
+        console.log(comparePrice(product1, product2));
+        console.log(product1);
+    </script>
+</body>
+
+</html>

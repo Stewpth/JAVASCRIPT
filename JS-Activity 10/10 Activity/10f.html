@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>10f Activity</title>
+    <style>
+        .gaming-btn {
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-weight: bold;
+            padding: 15px 23px;
+            border: none;
+            font-size: 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .music-btn {
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-weight: bold;
+            padding: 15px 23px;
+            border: none;
+            font-size: 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tech-btn {
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-weight: bold;
+            padding: 15px 23px;
+            border: none;
+            font-size: 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .is-toggled {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="gaming-btn" onclick="turnOnOff('.gaming-btn')">Gaming</button>
+    <button class="music-btn" onclick="turnOnOff('.music-btn')">Music</button>
+    <button class="tech-btn" onclick="turnOnOff('.tech-btn')">Tech</button>
+
+    <script>
+        function turnOnOff(buttonValue) {
+            const buttonOnOff = document.querySelector(`${buttonValue}`);
+
+            if (buttonOnOff.classList.contains('gaming-btn')) {
+                buttonOnOff.classList.add('is-toggled');
+                document.querySelector('.music-btn').classList.remove('is-toggled');
+                document.querySelector('.tech-btn').classList.remove('is-toggled');
+            } else if (buttonOnOff.classList.contains('music-btn')) {
+                buttonOnOff.classList.add('is-toggled');
+                document.querySelector('.gaming-btn').classList.remove('is-toggled');
+                document.querySelector('.tech-btn').classList.remove('is-toggled');
+            } else if (buttonOnOff.classList.contains('tech-btn')) {
+                buttonOnOff.classList.add('is-toggled');
+                document.querySelector('.gaming-btn').classList.remove('is-toggled');
+                document.querySelector('.music-btn').classList.remove('is-toggled');
+            }
+
+            /*
+            if (buttonOnOff.classList.contains('is-toggled')) {
+                document.querySelector('.gaming-btn').classList.remove('is-toggled');
+                document.querySelector('.music-btn').classList.remove('is-toggled');
+                document.querySelector('.tech-btn').classList.remove('is-toggled');
+            } else {
+                buttonOnOff.classList.add('is-toggled');
+            }
+                */
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12i Activity</title>
+</head>
+
+<body>
+    <button onclick="addMessage()">Add</button>
+    <button onclick="removeMessage()">Remove</button>
+    <script>
+        let message = 2;
+        document.title = 'App';
+        let isUpdating = true;
+        let updatingTitle;
+
+        updateTitle();
+
+        function updateTitle() {
+            if (updatingTitle) {
+                clearInterval(updatingTitle);
+            }
+
+            if (message > 0) {
+                updatingTitle = setInterval(function () {
+                    if (isUpdating) {
+                        document.title = 'App';
+                    } else {
+                        document.title = `(${message}) New Messages`;
+                    }
+                    isUpdating = !isUpdating;
+                }, 1000);
+            } else if (message === 0) {
+                document.title = 'App';
+            }
+        }
+
+        function addMessage() {
+            message++;
+            updateTitle();
+        }
+
+        function removeMessage() {
+            if (message > 0) {
+                message--;
+            }
+            updateTitle();
+        }
+    </script>
+</body>
+
+</html>

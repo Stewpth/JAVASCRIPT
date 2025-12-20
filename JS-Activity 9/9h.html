@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>9h Activity</title>
+</head>
+
+<body>
+    <input placeholder="Type Something" onkeyup="
+        updateInputKey(event.key);
+        ">
+    <p class="display-input"></p>
+    <script>
+        function updateInputKey(event) {
+            const inputKey = document.querySelector('.display-input').innerHTML;
+
+            if (event === 'Backspace') {
+                inputKey = document.querySelector('.display-input').innerHTML = inputKey.slice(0, -1);
+            } else {
+                inputKey = document.querySelector('.display-input').innerHTML += event;
+            }
+        }
+    </script>
+</body>
+
+</html>

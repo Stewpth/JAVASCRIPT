@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>10e Activity</title>
+    <style>
+        .gaming-btn {
+            background-color: rgb(230, 230, 230);
+            color: black;
+            font-weight: bold;
+            padding: 15px 23px;
+            border: none;
+            font-size: 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .is-toggled {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="gaming-btn" onclick="turnOnOff()">Gaming</button>
+    <button class="gaming-btn" onclick="turnOnOff()">Music</button>
+    <button class="gaming-btn" onclick="turnOnOff()">Tech</button>
+
+    <script>
+        function turnOnOff() {
+            const gameButton = document.querySelector('.gaming-btn');
+
+            if (gameButton.classList.contains('is-toggled')) {
+                gameButton.classList.remove('is-toggled');
+            } else {
+                gameButton.classList.add('is-toggled');
+            }
+        }
+    </script>
+</body>
+
+</html>

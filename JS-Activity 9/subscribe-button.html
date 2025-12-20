@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Subscribe</title>
+</head>
+
+<body>
+    <p>Youtube Subscribe Button</p>
+    <button class="js-sub-btn" onclick="clickSubButton()">Subscribe</button>
+
+    <script>
+        function clickSubButton() {
+            const subButton = document.querySelector('.js-sub-btn');
+
+            if (subButton.innerHTML === 'Subscribe') {
+                subButton.innerHTML = 'Subscribed';
+            } else {
+                subButton.innerHTML = 'Subscribe';
+            }
+        }
+    </script>
+</body>
+
+</html>

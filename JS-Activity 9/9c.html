@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>9c Activity</title>
+</head>
+
+<body>
+    <button onclick="playerMove('heads')">heads</button>
+    <button onclick="playerMove('tails')">tails</button>
+    <p class="js-move"></p>
+    <script>
+        function playerMove(move) {
+            document.querySelector('.js-move').innerHTML = `You chose: ${move}`;
+        }
+    </script>
+</body>
+
+</html>

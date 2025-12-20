@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11m Activity</title>
+</head>
+
+<body>
+    <script>
+        function minMax(nums) {
+            let result = {};
+
+            if (nums.length === 0) {
+                result.min = null;
+                result.max = null;
+
+                return result;
+            }
+
+            if (nums.length === 1) {
+                result.min = nums[0];
+                result.max = nums[0];
+
+                return result;
+            }
+
+            let min = nums[0];
+            let max = nums[0];
+
+            for (let i = 0; i < nums.length; i++) {
+                if (nums[i] > max) {
+                    max = nums[i];
+                } else if (nums[i] < min) {
+                    min = nums[i];
+                }
+            }
+
+            result.min = min;
+            result.max = max;
+            return result;
+        }
+
+        console.log(minMax([1, -3, 5]));
+        console.log(minMax([-2, 3, -5, 7, 10]));
+        console.log(minMax([]));
+        console.log(minMax([3]));
+    </script>
+</body>
+
+</html>

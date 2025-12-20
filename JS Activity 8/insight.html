@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Insight</title>
+</head>
+
+<body>
+    <button onclick="updateCartQuantity(10)">+10</button>
+    <script>
+        /*
+        const people = {
+            name: 'George',
+            age: 25
+        }
+
+        JSON.stringify(people);
+        console.log(JSON.parse(JSON.stringify(people)));
+        */
+
+        let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity'));
+
+        function updateCartQuantity(buttonValue) {
+            cartQuantity += buttonValue;
+            console.log(cartQuantity);
+            // because of JSON.stringify. 'cartQuantity' converts into string.
+            localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Amazon Shipping Calculator</title>
+    <style>
+        body {
+            font-family: arial;
+        }
+
+        .input-value {
+            padding: 10px;
+        }
+
+        .input-value::placeholder {
+            font-size: 14px;
+        }
+
+        .cal-button {
+            background-color: rgb(13, 145, 13);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .error-trigger-style {
+            color: rgb(173, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="js-getvalue input-value">
+    <button onclick="calculateTotal()" class="cal-button">Calculate</button>
+    <p class="js-total-cost"></p>
+    <p class="error-trigger error-trigger-style"></p>
+
+    <script>
+        function calculateTotal() {
+            const inputValue = document.querySelector('.js-getvalue');
+
+            let cost = Number(inputValue.value);
+
+            if (cost < 0) {
+                document.querySelector('.error-trigger').innerHTML = 'Error: cost cannot be less than 0';
+            } else if (cost < 40) {
+                cost = cost + 10;
+                document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+What i learned in lesson 8:
+
+1. Objects - pwede tayong maglagay ng iba't ibang data dito.
+
+2. Built in objects:
+	JSON - JSON can store data and use it universally.
+	localStorage - we can store data permanently here.
+
+3. What we can do in JSON?
+	JSON.stringify(objects) - converts object into string
+	JSON.parse(data) - converts string into data
+
+	Example for JSON.stringify(objects)
+
+		const people = {
+			name: 'George',
+			age: 25
+		}
+
+		JSON.stringify(people);
+
+		output: '{"name":"George","age":25}'
+        
+	Example for JSON.parse(data)
+
+		const people = {
+			name: 'George',
+			age: 25
+		}
+
+		JSON.stringify(people);
+		JSON.parse(people);
+
+		output: object = {name: 'George', age: 25}
+
+4. what we can do in localStorage?
+	localStorage method has auto-boxing features
+	localStorage method accept strings only.
+
+	localStorage.setItem('name/key', 'value') - to save the value.
+
+	
+	example: 
+		<button onclick="cartQuantity(10)">+10</button>
+
+		let cartQuantity = 0;
+
+		function updateCartQuantity(buttonValue) {
+			cartQuantity += buttonValue;
+			console.log(calculation);
+		// because of JSON.stringify. 'cartQuantity' converts into string.
+			localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+		}
+
+	this is looks like when we click the button:
+
+		click 1:	10
+		click 2:	20
+
+	localStorage.getItem('name/key') - to get the value from the localStorage
+					   from .setItem() method.
+
+	example: 
+		<button onclick="updateCartQuantity(10)">+10</button>
+
+		// The output of cartQuantity will become a string after using updateCartQuantity(buttonValue), 
+		// so we use JSON.parse to convert it back from a string to a number (or object). 
+		// cartQuantity is just a single variable, and objects can be variables too. 
+		// Since cartQuantity has only one value, JSON.parse successfully converts it back.
+		let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity'));
+
+		function updateCartQuantity(buttonValue) {
+			cartQuantity += buttonValue;
+			console.log(cartQuantity);
+		// because of JSON.stringify. 'cartQuantity' converts into string.
+			localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+		}
+
+	when we refresh the site or we go exit. the data still in the site.

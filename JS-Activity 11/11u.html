@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11t Activity</title>
+</head>
+
+<body>
+    <script>
+        const foods = ['egg', 'apple', 'egg', 'egg', 'ham'];
+
+        function removeDuplicateEgg(foods) {
+            const edible = foods.slice();
+            edible.reverse();
+
+            let food = [];
+            let eggCount = 0;
+
+            for (let i = 0; i < edible.length; i++) {
+                if (edible[i] === 'egg' && eggCount < 2) {
+                    eggCount++;
+                    continue;
+                }
+                food.push(edible[i]);
+            }
+
+            food.reverse();
+            return food;
+        }
+
+        console.log(removeDuplicateEgg(foods));
+        console.log(foods);
+    </script>
+</body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="coinflipdesign.css">
+    <title>Coin Flip</title>
+</head>
+
+<body>
+    <section class="box">
+        <p class="title">Coin Flip</p>
+
+        <div class="display-game">
+            <p class="display-result result-text"></p>
+            <p class="result-pic"></p>
+        </div>
+
+        <p class="game-command">Choose your move</p>
+        <nav class="button-part">
+            <button class="head-btn design-btn" onclick="playGame('coin-heads')">
+                <img src="coinflip-image/coin-heads.png" class="coin-design">
+            </button>
+
+            <button class="tails-btn design-btn" onclick="playGame('coin-tails')">
+                <img src="coinflip-image/coin-tails.png" class="coin-design">
+            </button>
+        </nav>
+
+        <p class="js-score score"></p>
+        <div class="resetscore-sec">
+            <button class="reset-btn" onclick="resetScore()">Reset Score</button>
+        </div>
+    </section>
+    <script src="coinflipgame.js"></script>
+</body>
+
+</html>

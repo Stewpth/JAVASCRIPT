@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Coin flip</title>
+</head>
+
+<body>
+    <button onclick="playGame('heads')">heads</button>
+    <button onclick="playGame('tails')">tails</button>
+
+    <script>
+        function pickBotMove() {
+            const randomNumber = Math.random();
+
+            const botMove = randomNumber < 0.5 ? 'heads' : 'tails';
+
+            return botMove;
+        }
+
+        function playGame(guess) {
+            botMove = pickBotMove();
+
+            guess === botMove ? console.log('You win!') : console.log('You lose!');
+        }
+
+    </script>
+</body>
+
+</html>

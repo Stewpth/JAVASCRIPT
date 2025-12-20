@@ -1,0 +1,13 @@
+8g activity:
+
+How to repeat a string in javascript
+
+answer: .repeat() method inside the bracket. you can set the value on how many times you want to repeat the value.
+
+sample:
+
+console.log('HAHA! '.repeat(3));
+
+output:
+
+HAHA! HAHA! HAHA!

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Amazon Shipping Calculator</title>
+</head>
+
+<body>
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="js-getvalue">
+    <button onclick="calculateTotal()">calculate</button>
+    <p class="js-total-cost"></p>
+
+    <script>
+        function calculateTotal() {
+            const inputValue = document.querySelector('.js-getvalue');
+
+            let cost = Number(inputValue.value);
+
+            if (cost < 40) {
+                cost = cost + 10;
+            }
+
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+        }
+    </script>
+</body>
+
+</html>

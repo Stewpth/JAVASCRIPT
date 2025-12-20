@@ -5,31 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon</title>
+    <!--Roboto Fonts for better looks-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Styles for the webpage-->
+    <link rel="stylesheet" href="styles/headers.css">
+
 </head>
 
 <body>
     <header class="amazon-header">
-        <section class="amazon-logo-box">
-            <button class="homepage">
+        <section class="left-section">
+            <button class="home-btn">
                 <img class="amazon-logo" src="images/amazon-logo-white.png" alt="amazon-logo">
             </button>
         </section>
-        <section class="search-box">
-            <input type="search" class="amazon-search">
+        <section class="middle-section">
+            <input type="search" class="search-bar" placeholder="Search">
             <button class="search-btn">
                 <img src="images/search-icon.png" alt="amazon-search-icon" class="search-icon">
             </button>
         </section>
-        <section class="order-management-box">
-            <button class="manage-order">
-                <p>Returns</p>
-                <p>& Orders</p>
-            </button>
-            <button class="cart-btn">
-                <p>2</p>
-                <img src="images/cart-icon.png" alt="cart-icon">
-                <p>cart</p>
-            </button>
+        <section class="right-section">
+            <a class="order-link">
+                <p class="return-text">Returns</p>
+                <p class="order-text">& Orders</p>
+            </a>
+            <a class="cart-btn header-link">
+                <img class="cart-icon" src="images/cart-icon.png" alt="cart-icon">
+                <div class="cart-quantity">2</div>
+                <div class="cart-name">Cart</div>
+            </a>
         </section>
     </header>
 </body>

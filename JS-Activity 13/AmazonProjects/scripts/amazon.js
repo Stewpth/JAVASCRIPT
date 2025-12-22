@@ -4,8 +4,7 @@ products.forEach((product) => {
     productHTML += 
         `<div class="product-box">
                 <div class="product-img-box">
-                    <img class="product-img" src="${product.img}"
-                        alt="product-image">
+                    <img class="product-img" src="${product.img}">
                 </div>
                 <div class="product-name">
                     ${product.name}
@@ -14,9 +13,9 @@ products.forEach((product) => {
                     <img src="images/ratings/rating-${product.ratings.stars * 10}.png" class="product-rating-star">
                     <p class="product-rating-count">${product.ratings.count}</p>
                 </div>
-                <div class="product-price">${(product.priceCents / 100).toFixed(2)}</div>
+                <div class="product-price">$${(product.priceCents / 100).toFixed(2)}</div>
                 <div class="product-quantity-container">
-                    <select class="quanity-selector">
+                    <select class="quantity-selector">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

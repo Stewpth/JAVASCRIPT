@@ -5,5 +5,22 @@ main {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+}
+
+@media (min-width: 1030px) and (max-width: 1285px) {
+  .products-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1286px) and (max-width: 1585px) {
+  .products-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1586px) {
+  .products-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
 }

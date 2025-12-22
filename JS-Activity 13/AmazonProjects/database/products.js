@@ -6,7 +6,7 @@ const products = [
             stars: 4.5,
             count: 87
         },
-        priceCent: 1090
+        priceCents: 1090
     },
     {
         img: 'images/products/intermediate-composite-basketball.jpg',
@@ -15,7 +15,7 @@ const products = [
             stars: 4,
             count: 87
         },
-        priceCent: 2095
+        priceCents: 2095
     },
     {
         img: 'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
@@ -24,7 +24,7 @@ const products = [
             stars: 4.5,
             count: 56
         },
-        priceCent: 1899
+        priceCents: 1899
     },
     {
         img: 'images/products/black-2-slot-toaster.jpg',

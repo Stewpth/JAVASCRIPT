@@ -10,35 +10,33 @@
 <body>
     <script>
         function minMax(nums) {
-            let result = {};
+            const result = {
+                min: 0,
+                max: 0
+            }
 
             if (nums.length === 0) {
-                result.min = null;
-                result.max = null;
-
+                result.max = 'null';
+                result.min = 'null';
                 return result;
-            }
-
-            if (nums.length === 1) {
-                result.min = nums[0];
+            } else if (nums.length === 1) {
                 result.max = nums[0];
-
+                result.min = nums[0];
                 return result;
             }
 
-            let min = nums[0];
-            let max = nums[0];
+            let num = nums[0];
 
             for (let i = 0; i < nums.length; i++) {
-                if (nums[i] > max) {
-                    max = nums[i];
-                } else if (nums[i] < min) {
-                    min = nums[i];
+                if (nums[i] > num) {
+                    num = nums[i];
+                    result.max = num;
+                } else if (nums[i] < num) {
+                    num = nums[i];
+                    result.min = num;
                 }
             }
 
-            result.min = min;
-            result.max = max;
             return result;
         }
 

@@ -10,15 +10,15 @@
 <body>
     <script>
         function countPositive(nums) {
-            let positive = 0;
+            const positive = [];
 
             for (let i = 0; i < nums.length; i++) {
                 if (nums[i] > 0) {
-                    positive++;
+                    positive.push(nums[i]);
                 }
             }
 
-            return positive;
+            return positive.length;
         }
 
         console.log(countPositive([1, -3, 5]));

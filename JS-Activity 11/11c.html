@@ -10,12 +10,11 @@
 <body>
     <script>
         function arraySwap(array) {
-            const firstI = array[0];
-            const lastI = array[array.length - 1];
+            firstI = array[0];
+            lastI = array[array.length - 1];
 
-            array[0] = lastI;
             array[array.length - 1] = firstI;
-
+            array[0] = lastI;
             return array;
         }
 

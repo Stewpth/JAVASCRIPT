@@ -10,19 +10,23 @@
 <body>
     <script>
         function countWords(words) {
-            let result = {};
+            let word = {}
+
             for (let i = 0; i < words.length; i++) {
-                let word = words[i];
-                if (result[word]) {
-                    result[word] += 1;
+                const fruits = words[i];
+
+                if (!word[fruits]) {
+                    word[fruits] = 1;
                 } else {
-                    result[word] = 1;
+                    word[fruits]++;
                 }
             }
 
-            return result;
+            return word;
         }
 
         console.log(countWords(['apple', 'grape', 'apple', 'apple']));
     </script>
 </body>
+
+</html>

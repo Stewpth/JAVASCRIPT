@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11f Activity</title>
+    <title>11g Activity</title>
 </head>
 
 <body>
     <script>
-        const array = [1, 2, 3];
+        let nums = [1, 2, 3];
 
-        for (let i = 0; i < array.length; i++) {
-            array[i]++;
+        let addOne = [];
+
+        for (let i = 0; i < nums.length; i++) {
+            addOne.push(nums[i] += 1);
         }
 
-        console.log(array);
+        console.log(addOne);
     </script>
 </body>
 

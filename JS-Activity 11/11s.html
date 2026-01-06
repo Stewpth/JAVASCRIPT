@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11s Activity</title>
+</head>
+
+<body>
+    <script>
+        function removeEgg(foods) {
+            let count = 0;
+            const food = [];
+
+            for (let i = 0; i < foods.length; i++) {
+                if (foods[i] === 'egg' && count < 2) {
+                    count++;
+                } else {
+                    food.push(foods[i]);
+                }
+            }
+
+            return food;
+        }
+
+        console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+    </script>
+</body>
+
+</html>

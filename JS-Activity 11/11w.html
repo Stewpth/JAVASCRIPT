@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11w Activity</title>
+</head>
+
+<body>
+    <script>
+        /*
+        function unique(array) {
+            const result = [];
+
+            for (let i = 0; i < array.length; i++) {
+                if (!findIndex(result, array[i])) {
+                    result.push(array[i]);
+                }
+            }
+
+            return result;
+        }
+
+        function findIndex(array, value) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === value) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        console.log(unique(['green', 'red', 'blue', 'red']));
+        console.log(unique(['red', 'green', 'green', 'red']));
+        */
+
+        function unique(array) {
+            const result = [];
+
+            for (let i = 0; i < array.length; i++) {
+                const word = array[i];
+
+                if (findIndex(result, word) === '-1') {
+                    result.push(array[i]);
+                }
+            }
+
+            return result;
+        }
+
+        function findIndex(array, word) {
+            let index = '-1';
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === word) {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
+        console.log(unique(['green', 'red', 'blue', 'red']));
+        console.log(unique(['red', 'green', 'green', 'red']));
+    </script>
+</body>
+
+</html>

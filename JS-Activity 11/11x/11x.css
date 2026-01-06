@@ -26,8 +26,10 @@ button,
   border: none;
   color: white;
   background-color: green;
-  padding: 6px;
+  padding: 10px;
   cursor: pointer;
+  align-items: stretch;
+  font-size: 15px;
 }
 
 .delete-button {

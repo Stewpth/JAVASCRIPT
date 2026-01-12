@@ -11,31 +11,27 @@
     <button onclick="addMessage()">Add</button>
     <button onclick="removeMessage()">Remove</button>
     <script>
-        let message = 2;
-        document.title = 'App';
+        let messages = 2;
+        let defaultTitle = true;
 
-        updateTitle();
+        document.title = 'App'
 
-        let isUpdating = true;
+        setInterval(function () {
+            if (defaultTitle) {
+                document.title = `(${messages}) New Messages`;
+                defaultTitle = false;
+            } else {
+                document.title = 'App';
+                defaultTitle = true;
+            }
+        }, 1000);
 
-        function updateTitle() {
-            setInterval(function () {
-                if (isUpdating) {
-                    document.title = 'App';
-                } else {
-                    document.title = `(${message}) New Messages`;
-                }
-
-                isUpdating = !isUpdating;
-            }, 1000);
-        }
 
         function addMessage() {
-            message++;
+            messages++;
         }
-
         function removeMessage() {
-            message--;
+            messages--;
         }
     </script>
 </body>

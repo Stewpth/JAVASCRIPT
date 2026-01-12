@@ -8,17 +8,15 @@
 </head>
 
 <body>
-    <button class="button" onclick="updateButton()">Add to Cart</button>
-
-    <p class="notif-button"></p>
+    <button class="add-to-cart-btn" onclick="messageCart()">Add to Cart</button>
+    <p class="message-added"></p>
     <script>
-        function updateButton() {
-            document.querySelector('.notif-button').innerHTML =
-                'Added';
+        function messageCart() {
+            const messageBox = document.querySelector('.message-added');
+            messageBox.innerHTML = 'Added';
             setTimeout(function () {
-                document.querySelector('.notif-button').innerHTML = '';
+                messageBox.innerHTML = '';
             }, 2000);
-
         }
     </script>
 </body>

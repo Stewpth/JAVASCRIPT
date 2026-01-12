@@ -9,16 +9,16 @@
 
 <body>
     <script>
-        let webTitle = 'App';
-        document.title = webTitle;
+        let defaultTitle = true;
+        document.title = 'App'
 
         setInterval(function () {
-            if (webTitle === 'App') {
-                webTitle = '(2) New Messages';
-                document.title = webTitle;
-            } else if (webTitle === '(2) New Messages') {
-                webTitle = 'App';
-                document.title = webTitle;
+            if (defaultTitle) {
+                document.title = '(2) New Messages';
+                defaultTitle = false;
+            } else {
+                document.title = 'App';
+                defaultTitle = true;
             }
         }, 1000);
     </script>

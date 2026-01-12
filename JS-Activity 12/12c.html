@@ -8,11 +8,12 @@
 </head>
 
 <body>
-    <button class="button" onclick="updateButton()">Start</button>
+    <button class="changing-btn" onclick="changeButton()">Start</button>
     <script>
-        function updateButton() {
+        function changeButton() {
+            const changingButton = document.querySelector('.changing-btn');
             setTimeout(function () {
-                document.querySelector('.button').innerHTML = 'Finished!';
+                changingButton.innerHTML = 'Finished!';
             }, 1000);
         }
     </script>

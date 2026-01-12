@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12i Activity</title>
+</head>
+
+<body>
+    <button class="add-btn">Add</button>
+    <button class="remove-btn">Remove</button>
+    <script>
+        let messages = 2;
+        let defaultTitle = true;
+
+        let intervalId;
+
+        document.title = 'App';
+
+        changeTitle();
+
+        function changeTitle() {
+            clearInterval(intervalId);
+
+            if (messages === 0) {
+                document.title = 'App';
+                return;
+            } else {
+                intervalId = setInterval(function () {
+                    if (defaultTitle) {
+                        document.title = `(${messages}) New Messages`;
+                        defaultTitle = false;
+                    } else {
+                        document.title = 'App';
+                        defaultTitle = true;
+                    }
+                }, 1000);
+            }
+        }
+
+        function addMessage() {
+            messages++;
+            changeTitle();
+        }
+        function removeMessage() {
+            if (messages > 0) {
+                messages--;
+            }
+            changeTitle();
+        }
+
+        // I only change the exercise 12i 
+        // because this is the final version from 12c
+        document.querySelector('.add-btn')
+            .addEventListener('click', () => {
+                addMessage();
+            });
+
+        document.querySelector('.remove-btn')
+            .addEventListener('click', () => {
+                removeMessage();
+            });
+    </script>
+</body>
+
+</html>

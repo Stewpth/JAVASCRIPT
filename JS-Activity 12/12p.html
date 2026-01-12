@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12p Activity</title>
+</head>
+
+<body>
+    <script>
+
+        // For 12c
+        /*
+        function changeButton() {
+            const changingButton = document.querySelector('.changing-btn');
+            setTimeout(() => {
+                changingButton.innerHTML = 'Finished!';
+            }, 1000);
+        }
+        */
+
+        // For 12d
+        /*
+        function changeButton() {
+            const changingButton = document.querySelector('.changing-btn');
+            changingButton.innerHTML = 'Loading...';
+            setTimeout(() => {
+                changingButton.innerHTML = 'Finished!';
+            }, 1000);
+        }
+        */
+
+        // For 12e
+        /*
+        function messageCart() {
+            const messageBox = document.querySelector('.message-added');
+            messageBox.innerHTML = 'Added';
+            setTimeout(() => {
+                messageBox.innerHTML = '';
+            }, 2000);
+        }
+        */
+
+        // For 12f
+        /*
+        function messageCart() {
+            const messageBox = document.querySelector('.message-added');
+            messageBox.innerHTML = 'Added';
+
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                messageBox.innerHTML = '';
+            }, 2000);
+        }
+        */
+
+        // For 12g
+        /*
+        function messageCart() {
+            const messageBox = document.querySelector('.message-added');
+            messageBox.innerHTML = 'Added';
+
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                messageBox.innerHTML = '';
+            }, 2000);
+        }
+        */
+
+        // For 12h
+        /*
+        setInterval(() => {
+            if (defaultTitle) {
+                document.title = `(${messages}) New Messages`;
+                defaultTitle = false;
+            } else {
+                document.title = 'App';
+                defaultTitle = true;
+            }
+        }, 1000);
+        */
+
+        // For 12i
+        /*
+        function changeTitle() {
+            clearInterval(intervalId);
+
+            if (messages === 0) {
+                document.title = 'App';
+                return;
+            } else {
+                intervalId = setInterval(function () {
+                    if (defaultTitle) {
+                        document.title = `(${messages}) New Messages`;
+                        defaultTitle = false;
+                    } else {
+                        document.title = 'App';
+                        defaultTitle = true;
+                    }
+                }, 1000);
+            }
+        }
+        */
+    </script>
+</body>
+
+</html>

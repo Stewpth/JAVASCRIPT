@@ -3,10 +3,18 @@ main {
   margin-top: 60px;
 }
 
+body {
+  font-family: Roboto, arial;
+  margin: 0;
+  padding: 0;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
 }
+
+/* Design depends on screen size */
 
 @media (max-width: 2000px) {
   .products-grid {

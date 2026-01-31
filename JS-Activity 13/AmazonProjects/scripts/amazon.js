@@ -49,7 +49,7 @@ document.querySelector('.js-products-grid')
 document.querySelectorAll('.js-add-to-cart-btn')
     .forEach((button) => {
         button.addEventListener('click', () => {  
-            const productId = button.dataset.productId;
+            const { productId } = button.dataset;
             const selectedQuantity = document.querySelector(`.js-quantity-selector-${productId}`);
 
             let matchingItem;
@@ -60,13 +60,12 @@ document.querySelectorAll('.js-add-to-cart-btn')
                 }
             });
 
+            // Using Number() method to convert the string into integer/number.
+
             if (matchingItem) {  
                 matchingItem.quantity += Number(selectedQuantity.value);     
             } else {
-                cart.push({
-                    productId: productId,
-                    quantity: Number(selectedQuantity.value)
-                });
+                cart.push({ productId, quantity: Number(selectedQuantity.value)});
             }
 
             // for cart quantity.
@@ -85,7 +84,5 @@ document.querySelectorAll('.js-add-to-cart-btn')
 
             document.querySelector('.js-cart-quantity-mobile')
                 .innerHTML = cartQuantity;
-
-                console.log(productId.value);
         });
     });

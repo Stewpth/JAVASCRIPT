@@ -89,6 +89,10 @@ select {
   margin-right: 5px;
 }
 
+.toggleMsg {
+  opacity: 1;
+}
+
 /* Add to Cart button Design */
 
 .add-cart-btn {

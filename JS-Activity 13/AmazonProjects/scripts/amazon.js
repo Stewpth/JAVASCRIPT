@@ -29,7 +29,7 @@ products.forEach((product) => {
                         <option value="10">10</option>
                     </select>
                 </div>
-                <div class="added-to-cart-msg">
+                <div class="added-to-cart-msg js-added-to-cart-msg">
                     <img src="images/Function-img/checkmark.png" class="added-icon">
                     Added
                 </div>
@@ -48,12 +48,18 @@ document.querySelector('.js-products-grid')
 // Interactive codes for Add to cart button
 document.querySelectorAll('.js-add-to-cart-btn')
     .forEach((button) => {
-        button.addEventListener('click', () => {  
+
+        // We put this outside of the function to
+        // avoid duplicating variables
+        let msgAddedId;
+
+        button.addEventListener('click', () => {
             const { productId } = button.dataset;
-            const selectedQuantity = document.querySelector(`.js-quantity-selector-${productId}`);
+            
+            const selectedQuantity = document.querySelector(`.js-quantity-selector-${productId}`);    
 
             let matchingItem;
-
+            
             cart.forEach((item) => {
                 if (productId === item.productId) {
                     matchingItem = item;
@@ -84,5 +90,20 @@ document.querySelectorAll('.js-add-to-cart-btn')
 
             document.querySelector('.js-cart-quantity-mobile')
                 .innerHTML = cartQuantity;
+
+            // I add 'toggleMsg' first and add timeOut
+            document.querySelector('.js-added-to-cart-msg')
+                .classList.add('toggleMsg');
+
+            // to safely clear the timer for setTimeout after
+            // reclick the button
+            if (msgAddedId) {
+                clearTimeout(msgAddedId);
+            }
+
+            msgAddedId = setTimeout(() => {
+                document.querySelector('.js-added-to-cart-msg')
+                    .classList.remove('toggleMsg');
+            }, 2000);
         });
     });

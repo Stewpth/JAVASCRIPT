@@ -1,5 +1,6 @@
 let productHTML = '';
 
+// Generates the HTML for products and display it on the webpage. 
 products.forEach((product) => {
     productHTML += 
         `<div class="product-box">
@@ -15,7 +16,7 @@ products.forEach((product) => {
                 </div>
                 <div class="product-price">$${(product.priceCents / 100).toFixed(2)}</div>
                 <div class="product-quantity-container">
-                    <select class="quantity-selector">
+                    <select class="quantity-selector js-quantity-selector-${product.productId}">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -44,10 +45,12 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid')
     .innerHTML = productHTML;
 
+// Interactive codes for Add to cart button
 document.querySelectorAll('.js-add-to-cart-btn')
     .forEach((button) => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', () => {  
             const productId = button.dataset.productId;
+            const selectedQuantity = document.querySelector(`.js-quantity-selector-${productId}`);
 
             let matchingItem;
 
@@ -58,13 +61,18 @@ document.querySelectorAll('.js-add-to-cart-btn')
             });
 
             if (matchingItem) {  
-                matchingItem.quantity += 1;     
+                matchingItem.quantity += Number(selectedQuantity.value);     
             } else {
                 cart.push({
                     productId: productId,
-                    quantity: 1
+                    quantity: Number(selectedQuantity.value)
                 });
             }
+
+            // for cart quantity.
+            // we put this here instead seperated for
+            // less line and every click. the cartQuantity will
+            // update
 
             let cartQuantity = 0;
 
@@ -77,5 +85,7 @@ document.querySelectorAll('.js-add-to-cart-btn')
 
             document.querySelector('.js-cart-quantity-mobile')
                 .innerHTML = cartQuantity;
+
+                console.log(productId.value);
         });
     });

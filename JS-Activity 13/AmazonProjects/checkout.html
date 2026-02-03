@@ -14,56 +14,69 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/checkout.css">
+    <link rel="stylesheet" href="styles/checkout-headers.css">
 </head>
 
 <body>
-    <header class="checkout-header">
+    <header class="checkout-headers">
         <section class="left-section">
             <a href="amazon.html" class="homepage-logo">
-                <img src="images/header-image/amazon-logo.png" alt="homepage-logo">
+                <img src="images/header-image/amazon-logo.png" alt="homepage-logo" class="homepage-logo-pic">
             </a>
         </section>
         <section class="middle-section">
-            <span>Checkout(<p class="item-quantity">0 items</p>)</span>
+            <span class="checkout-text">Checkout (<a href="amazon.html" class="item-quantity">0 items</a>)</span>
         </section>
         <section class="right-section">
-            <img src="images/header-image/checkout-lock-icon.png" alt="checkout-lock-icon">
+            <img src="images/header-image/checkout-lock-icon.png" alt="checkout-lock-icon" class="checkout-lock-icon">
         </section>
     </header>
 
     <main>
-        <aside class="payment-info">
-            <h2 class="payment-summary-title">Review your order</h2>
+        <h2 class="summary-title">Review your order</h2>
 
-            <div class="summary-order">
-                <h3>Order summary</h3>
-                <div class="payment-summary-row">
-                    <div>Items (0):</div>
-                    <div class="payment-summary-money">$0.00</div>
-                </div>
-                <div class="payment-summary-row">
-                    <span>Shipping & handling:</span>
-                    <div class="payment-summary-money">$0.00</div>
-                </div>
-                <div class="payment-summary-row">
-                    <span>Total before tax:</span>
-                    <div class="payment-summary-money">$0.00</div>
-                </div>
-                <div class="payment-summary-row">
-                    <span>Estimated tax (10%):</span>
-                    <div class="payment-summary-money">$0.00</div>
-                </div>
-            </div>
+        <section class="checkout-grid">
 
-            <div class="total-summary-order">
-                <h2>Order total:</h2>
-                <h2 class="total-cost">$0.00</h2>
-            </div>
+            <aside class="cart-summary">cart-summary</aside>
 
-            <div class="place-order-box">
-                <button class="place-order-btn">Place your order</button>
-            </div>
-        </aside>
+            <aside class="payment-info">
+                <div class="summary-order">
+                    <h3 class="order-summary">Order Summary</h3>
+                    <div class="payment-summary-row">
+                        <div class="item-summary">Items (0):</div>
+                        <div class="payment-summary-money">$0.00</div>
+                    </div>
+                    <div class="payment-summary-row">
+                        <span class="shipping-summary">Shipping & handling:</span>
+                        <div class="payment-summary-money">$0.00</div>
+                    </div>
+                    <div class="payment-summary-row subtotal-row">
+                        <span class="total-no-tax-summary subtotal-left-row">Total before tax:</span>
+                        <div class="payment-summary-money subtotal-right-row">$0.00</div>
+                    </div>
+                    <div class="payment-summary-row">
+                        <span>Estimated tax (10%):</span>
+                        <div class="payment-summary-money">$0.00</div>
+                    </div>
+                </div>
+
+                <div class="total-summary-order">
+                    <h3 class="total-cost">Order total:</h3>
+                    <h3 class="total-cost">$0.00</h3>
+                </div>
+
+                <div class="place-order-box">
+                    <button class="place-order-btn button-primary">
+                        Place your order
+                    </button>
+                </div>
+            </aside>
+
+        </section>
+
     </main>
 </body>
 

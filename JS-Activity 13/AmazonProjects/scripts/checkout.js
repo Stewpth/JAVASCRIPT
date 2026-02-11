@@ -82,3 +82,4 @@ document.querySelectorAll('.js-delete-quantity-link')
             productBox.remove();
         });
     });
+

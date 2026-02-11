@@ -61,7 +61,9 @@ function displayAddedMsg(msgAddedId) {
     }, 2000);
 }
 
-function updateCartQuantity() {
+
+
+export function updateCartQuantity() {
     let cartQuantity = 0;
 
     cart.forEach((cartItem) => {
@@ -69,7 +71,7 @@ function updateCartQuantity() {
     });
 
     document.querySelector('.js-cart-quantity')
-        .innerHTML = cartQuantity;
+    .innerHTML = cartQuantity;
 
     document.querySelector('.js-cart-quantity-mobile')
         .innerHTML = cartQuantity;

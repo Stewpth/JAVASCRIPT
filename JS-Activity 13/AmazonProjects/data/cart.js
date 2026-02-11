@@ -1,4 +1,4 @@
-export let cart = [{
+export let cart = JSON.parse(localStorage.getItem('cart')) || [{
     productId: 'f3deefd6-c8c4-4302-90ab-58c637764eea',
     quantity: 2,
 }, {
@@ -8,24 +8,26 @@ export let cart = [{
 ];
 
 export function addToCart(productId) {
-        const selectedQuantity = document.querySelector(`.js-quantity-selector-${productId}`);
+    const selectedQuantity = document.querySelector(`.js-quantity-selector-${productId}`);
 
-        let matchingItem;
-            
-        cart.forEach((item) => {
-            if (productId === item.productId) {
-                matchingItem = item;
-            }
-        });
-
-        // Using Number() method to convert the string into integer/number.
-            
-        if (matchingItem) {  
-            matchingItem.quantity += Number(selectedQuantity.value);     
-        } else {
-            cart.push({ productId, quantity: Number(selectedQuantity.value)});
+    let matchingItem;
+        
+    cart.forEach((item) => {
+        if (productId === item.productId) {
+            matchingItem = item;
         }
+    });
+
+    // Using Number() method to convert the string into integer/number.
+        
+    if (matchingItem) {  
+        matchingItem.quantity += Number(selectedQuantity.value);     
+    } else {
+        cart.push({ productId, quantity: Number(selectedQuantity.value)});
     }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
 
 export function removeFromCart(productId) {
     const newCart = [];
@@ -37,4 +39,6 @@ export function removeFromCart(productId) {
     });
 
     cart = newCart;
+
+    localStorage.setItem('cart', JSON.stringify(cart));
 };

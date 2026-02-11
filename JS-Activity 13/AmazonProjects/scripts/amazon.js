@@ -1,3 +1,6 @@
+import { cart, addToCart} from '../data/cart.js';
+import { products } from '../data/products.js';
+
 let productHTML = '';
 
 // Generates the HTML for products and display it on the webpage. 
@@ -42,68 +45,49 @@ products.forEach((product) => {
             </div>`
 });
 
+function displayAddedMsg(msgAddedId) {
+    const productIndex = document.querySelector(`.js-added-to-cart-msg-id-${productId}`);
+    // Display the Added Message when the button is active.
+    productIndex.classList.add('toggleMsg');
+        
+    // to safely clear the timer for setTimeout after reclick the button
+    if (msgAddedId) {
+        clearTimeout(msgAddedId);
+    }
+
+    msgAddedId = setTimeout(() => {
+        document.querySelector(`.js-added-to-cart-msg-id-${productId}`).classList.remove('toggleMsg');
+    }, 2000);
+}
+
+function updateCartQuantity() {
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+    });
+
+    document.querySelector('.js-cart-quantity')
+        .innerHTML = cartQuantity;
+
+    document.querySelector('.js-cart-quantity-mobile')
+        .innerHTML = cartQuantity;
+}
+
 document.querySelector('.js-products-grid')
     .innerHTML = productHTML;
 
-// Interactive codes for Add to cart button
+
 document.querySelectorAll('.js-add-to-cart-btn')
     .forEach((button) => {
-
-        // We put this outside of the function to
-        // avoid duplicating variables
+        // We put this outside of the function to avoid duplicating variables
         let msgAddedId;
-
         button.addEventListener('click', () => {
             const { productId } = button.dataset;
-
-            const productIndex = document.querySelector(`.js-added-to-cart-msg-id-${productId}`);
-            
-            const selectedQuantity = document.querySelector(`.js-quantity-selector-${productId}`);    
-
-            let matchingItem;
-            
-            cart.forEach((item) => {
-                if (productId === item.productId) {
-                    matchingItem = item;
-                }
-            });
-
-            // Using Number() method to convert the string into integer/number.
-
-            if (matchingItem) {  
-                matchingItem.quantity += Number(selectedQuantity.value);     
-            } else {
-                cart.push({ productId, quantity: Number(selectedQuantity.value)});
-            }
-
-            // for cart quantity.
-            // we put this here instead seperated for
-            // less line and every click. the cartQuantity will
-            // update
-
-            let cartQuantity = 0;
-
-            cart.forEach((item) => {
-                cartQuantity += item.quantity;
-            });
-
-            document.querySelector('.js-cart-quantity')
-                .innerHTML = cartQuantity;
-
-            document.querySelector('.js-cart-quantity-mobile')
-                .innerHTML = cartQuantity;
-
-            // Display the Added Message when the button is active.
-            productIndex.classList.add('toggleMsg');
-                
-            // to safely clear the timer for setTimeout after
-            // reclick the button
-            if (msgAddedId) {
-                clearTimeout(msgAddedId);
-            }
-
-            msgAddedId = setTimeout(() => {
-                document.querySelector(`.js-added-to-cart-msg-id-${productId}`).classList.remove('toggleMsg');
-            }, 2000);
+            addToCart(productId);
+            updateCartQuantity();
+            displayAddedMsg(msgAddedId);
         });
     });
+
+    

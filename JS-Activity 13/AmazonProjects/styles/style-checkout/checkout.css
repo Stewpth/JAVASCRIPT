@@ -28,10 +28,11 @@ main {
   align-items: start;
 }
 
-.cart-summary {
+.cart-item-box {
   display: block;
   border: 1px solid rgb(222, 222, 222);
   padding: 18px;
+  margin-bottom: 12px;
 }
 
 .cart-item-delivery-text {

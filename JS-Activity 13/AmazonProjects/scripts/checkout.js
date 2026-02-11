@@ -42,7 +42,7 @@ cart.forEach((cartItem) => {
                     <p class="delivery-option-title">Choose a delivery option:</p>
 
                     <div class="delivery-option-grid">
-                        <input type="radio" name="name1" class="delivery-option-input">
+                        <input type="radio" name="delivery-option-${matchingProduct.productId}" class="delivery-option-input">
                         <div class="delivery-option-info">
                             <div class="delivery-option-date">Friday, February 20</div>
                             <div class="delivery-option-price">FREE Shipping</div>
@@ -50,7 +50,7 @@ cart.forEach((cartItem) => {
                     </div>
 
                     <div class="delivery-option-grid">
-                        <input type="radio" name="name1" class="delivery-option-input">
+                        <input type="radio" name="delivery-option-${matchingProduct.productId}" class="delivery-option-input">
                         <div class="delivery-option-info">
                             <div class="delivery-option-date">Monday, February 16</div>
                             <div class="delivery-option-price">$4.99 - Shipping</div>
@@ -58,7 +58,7 @@ cart.forEach((cartItem) => {
                     </div>
 
                     <div class="delivery-option-grid">
-                        <input type="radio" name="name1" class="delivery-option-input">
+                        <input type="radio" name="delivery-option-${matchingProduct.productId}" class="delivery-option-input">
                         <div class="delivery-option-info">
                             <div class="delivery-option-date">Thursday, February 12</div>
                             <div class="delivery-option-price">$9.99 - Shipping</div>
@@ -78,6 +78,7 @@ document.querySelectorAll('.js-delete-quantity-link')
             const { productId } = link.dataset;
             removeFromCart(productId);
 
-            console.log(cart);
+            const productBox = document.querySelector(`.js-cart-item-box-${productId}`);
+            productBox.remove();
         });
     });

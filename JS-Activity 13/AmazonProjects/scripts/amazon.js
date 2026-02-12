@@ -46,7 +46,23 @@ products.forEach((product) => {
             </div>`
 });
 
-function displayAddedMsg(msgAddedId) {
+document.querySelector('.js-products-grid')
+    .innerHTML = productHTML;
+
+// We put this outside of the function to avoid duplicating variables
+const msgAddedId = {};
+
+document.querySelectorAll('.js-add-to-cart-btn')
+    .forEach((button) => {
+        button.addEventListener('click', () => {
+            const { productId } = button.dataset; 
+            addToCart(productId);
+            updateCartQuantity();
+            displayAddedMsg(msgAddedId, productId);
+        });
+    });
+
+function displayAddedMsg(msgAddedId, productId) {
     const productIndex = document.querySelector(`.js-added-to-cart-msg-id-${productId}`);
     // Display the Added Message when the button is active.
     productIndex.classList.add('toggleMsg');
@@ -61,8 +77,6 @@ function displayAddedMsg(msgAddedId) {
     }, 2000);
 }
 
-
-
 export function updateCartQuantity() {
     let cartQuantity = 0;
 
@@ -76,21 +90,3 @@ export function updateCartQuantity() {
     document.querySelector('.js-cart-quantity-mobile')
         .innerHTML = cartQuantity;
 }
-
-document.querySelector('.js-products-grid')
-    .innerHTML = productHTML;
-
-
-document.querySelectorAll('.js-add-to-cart-btn')
-    .forEach((button) => {
-        // We put this outside of the function to avoid duplicating variables
-        let msgAddedId;
-        button.addEventListener('click', () => {
-            const { productId } = button.dataset;
-            addToCart(productId);
-            updateCartQuantity();
-            displayAddedMsg(msgAddedId);
-        });
-    });
-
-    

@@ -103,19 +103,42 @@ document.querySelectorAll('.js-save-quantity-link')
         const itemQuantityInput = document.querySelector(`.js-quantity-input-${productId}`);
         const itemQuantityValue = document.querySelector(`.js-quantity-value-${productId}`);
         const container = document.querySelector(`.js-cart-item-box-${productId}`);
-
+        
+        
         link.addEventListener('click', () => {
-            container.classList.remove('is-editing-quantity');
-            const newQuantity = Number(itemQuantityInput.value);
-            updateQuantity(productId, newQuantity);
-            itemQuantityValue.innerHTML = newQuantity;
-            updateCartQuantity();
+            handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
+        });
+
+        itemQuantityInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
+            }
         });
     });
+
+/** --------------------------- FUNCTIONS --------------------------------**/
 
 // We have this also in amazon.js and its okay because we avoid naming conflicts
 function updateCartQuantity() {
     const cartQuantity = calculateCartQuantity();
 
     document.querySelector('.js-item-quantity').innerHTML = `${cartQuantity} items`;
+}
+
+// for update link purposes....
+function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container) {
+    const newQuantity = Number(itemQuantityInput.value);
+
+    if (newQuantity < 0 || newQuantity >= 1000) {
+        alert('Invalid input: The quantity must be atleast 0 and less than 1000');
+        itemQuantityInput.value = '';
+        return;
+    }
+
+    itemQuantityValue.innerHTML = newQuantity;
+    updateQuantity(productId, newQuantity);
+
+    updateCartQuantity();
+    container.classList.remove('is-editing-quantity');
+    itemQuantityInput.value = '';
 }

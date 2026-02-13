@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from "../data/cart.js";
+import { cart, removeFromCart, calculateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -87,11 +87,7 @@ document.querySelectorAll('.js-delete-quantity-link')
 
 // We have this also in amazon.js and its okay because we avoid naming conflicts
 function updateCartQuantity() {
-    let cartQuantity = 0;
-
-    cart.forEach((cartItem) => {
-        cartQuantity += cartItem.quantity;
-    });
+    const cartQuantity = calculateCartQuantity();
 
     document.querySelector('.js-item-quantity').innerHTML = `${cartQuantity} items`;
 }

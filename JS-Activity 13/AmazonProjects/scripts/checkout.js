@@ -2,6 +2,7 @@ import { cart, removeFromCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
+updateCartQuantity(); // Call this function to update when loading the page
 let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
@@ -80,6 +81,17 @@ document.querySelectorAll('.js-delete-quantity-link')
 
             const productBox = document.querySelector(`.js-cart-item-box-${productId}`);
             productBox.remove();
+            updateCartQuantity();
         });
     });
 
+// We have this also in amazon.js and its okay because we avoid naming conflicts
+function updateCartQuantity() {
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+    });
+
+    document.querySelector('.js-item-quantity').innerHTML = `${cartQuantity} items`;
+}

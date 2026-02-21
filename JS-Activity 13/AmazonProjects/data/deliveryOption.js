@@ -28,10 +28,31 @@ export function getDeliveryOption(deliveryOptionId) {
     return deliveryOption || deliveryOptions[0];
 }
 
+// We get the remaining days from the delivery option, 
+// and we calculate the delivery date by adding the 
+// remaining days to the current date, and we skip the weekends.
 export function calculateDeliveryDate(deliveryOption) {
-    const today = dayjs();
-    const deliveryDate = today.add(deliveryOption.deliveryDate, 'days');
-    const formattedDeliveryDate = deliveryDate.format('dddd, MMMM D');
+    let remainingDays = deliveryOption.deliveryDays;
+    let deliveryDate = dayjs();
 
-    return formattedDeliveryDate;
+    while (remainingDays > 0) {
+        deliveryDate = deliveryDate.add(1, 'day');
+
+        if (!isWeekend(deliveryDate)) {
+            remainingDays--;
+            // This is a shortcut for:
+            // remainingDays = remainingDays - 1;
+        }
+    }
+
+    const dateString = deliveryDate.format('dddd, MMMM D');
+
+    return dateString;  
 }
+
+function isWeekend(date) {
+  const dayOfWeek = date.format('dddd');
+  return dayOfWeek === 'Saturday' || dayOfWeek === 'Sunday';
+}
+
+

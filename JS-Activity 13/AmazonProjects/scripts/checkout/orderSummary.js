@@ -1,11 +1,12 @@
 import { cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeliveryOption } from "../../data/cart.js";
-import { products, getProduct } from "../../data/products.js";
+import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../../data/deliveryOption.js";
 import { updateSummaryPayment } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeaders.js";
 
 export function updateSummaryOrder() {
-    updateCartQuantity(); // Call this function to update when loading the page
+    
     let cartSummaryHTML = '';
 
     cart.forEach((cartItem) => {
@@ -58,7 +59,7 @@ export function updateSummaryOrder() {
             link.addEventListener('click', () => {
                 const { productId } = link.dataset;
                 removeFromCart(productId);
-                updateCartQuantity(); // Update the cart quantity in the header
+                renderCheckoutHeader(); // Update the header to reflect the new cart quantity after deletion
                 updateSummaryPayment(); // Update the payment summary to reflect the removed item
                 updateSummaryOrder(); // Re-render the order summary to reflect the removed item
             });
@@ -84,13 +85,17 @@ export function updateSummaryOrder() {
             
             link.addEventListener('click', () => {
                 handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
-                updateSummaryPayment();
+                updateSummaryPayment(); // Update the payment summary to reflect the new quantity
+                renderCheckoutHeader(); // Update the header to reflect the new cart quantity after quantity update
+                updateSummaryOrder(); // Re-render the order summary to reflect the new quantity
             });
 
             itemQuantityInput.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
                     updateSummaryPayment();
+                    renderCheckoutHeader();
+                    updateSummaryOrder();
                 }
             });
         });
@@ -102,6 +107,7 @@ export function updateSummaryOrder() {
                 updateDeliveryOption(productId, deliveryOptionId);
                 updateSummaryOrder();
                 updateSummaryPayment();
+                renderCheckoutHeader();
             });
         });
 }
@@ -109,13 +115,6 @@ export function updateSummaryOrder() {
 updateSummaryOrder(); // Call the function to render the cart summary on page load
 
 /** --------------------------- FUNCTIONS --------------------------------**/
-
-// We have this also in amazon.js and its okay because we avoid naming conflicts
-function updateCartQuantity() {
-    const cartQuantity = calculateCartQuantity();
-
-    document.querySelector('.js-item-quantity').innerHTML = `${cartQuantity} items`;
-}
 
 // for update link purposes....
 function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container) {
@@ -130,7 +129,6 @@ function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, c
     itemQuantityValue.innerHTML = newQuantity;
     updateQuantity(productId, newQuantity);
 
-    updateCartQuantity();
     container.classList.remove('is-editing-quantity');
     itemQuantityInput.value = '';
 }

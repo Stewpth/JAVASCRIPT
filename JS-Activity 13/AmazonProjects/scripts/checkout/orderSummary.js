@@ -1,8 +1,7 @@
 import { cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeliveryOption } from "../../data/cart.js";
 import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
-import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
-import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOption.js";
+import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../../data/deliveryOption.js";
 import { updateSummaryPayment } from "./paymentSummary.js";
 
 export function updateSummaryOrder() {
@@ -15,9 +14,8 @@ export function updateSummaryOrder() {
         let matchingProduct = getProduct(productId);
         const deliveryOptionId = cartItem.deliveryOptionId;
         const deliveryOption = getDeliveryOption(deliveryOptionId);
-        const today = dayjs();
-        const deliveryDate = today.add(deliveryOption.deliveryDate, 'days');
-        const formattedDeliveryDate = deliveryDate.format('dddd, MMMM D');
+
+        const formattedDeliveryDate = calculateDeliveryDate(deliveryOption);
 
         cartSummaryHTML += `
             <div class="cart-item-box js-cart-item-box-${matchingProduct.productId}">
@@ -54,8 +52,6 @@ export function updateSummaryOrder() {
     });
 
     document.querySelector('.js-cart-summary').innerHTML = cartSummaryHTML;
-
-    
 
     document.querySelectorAll('.js-delete-quantity-link')
         .forEach((link) => {
@@ -141,12 +137,16 @@ function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, c
 
 function generateDeliveryOption(matchingProduct, cartItem) {
     let deliveryOptionsHTML = '';
+
     deliveryOptions.forEach((deliveryOption) => {
-        const today = dayjs();
-        const deliveryDate = today.add(deliveryOption.deliveryDate, 'days');
-        const formattedDeliveryDate = deliveryDate.format('dddd, MMMM D');
-        const deliveryPrice = deliveryOption.deliveryPriceCents === 0 ? 'FREE Shipping' : `$${formatCurrency(deliveryOption.deliveryPriceCents)} - Shipping`;
+        const formattedDeliveryDate = calculateDeliveryDate(deliveryOption);
+
+        const deliveryPrice = deliveryOption.deliveryPriceCents === 0 ?
+            'FREE Shipping' :
+            `$${formatCurrency(deliveryOption.deliveryPriceCents)} - Shipping`;
+
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId ? 'checked' : ''; // Default to the selected option being checked
+        
         deliveryOptionsHTML += `
             <div class="delivery-option-grid js-delivery-option" 
                 data-product-id="${matchingProduct.productId}" 

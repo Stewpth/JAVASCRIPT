@@ -64,6 +64,7 @@ export function updateSummaryOrder() {
                 const productBox = document.querySelector(`.js-cart-item-box-${productId}`);
                 productBox.remove();
                 updateCartQuantity();
+                updateSummaryPayment();
             });
         });
 
@@ -87,11 +88,13 @@ export function updateSummaryOrder() {
             
             link.addEventListener('click', () => {
                 handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
+                updateSummaryPayment();
             });
 
             itemQuantityInput.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
+                    updateSummaryPayment();
                 }
             });
         });

@@ -55,16 +55,16 @@ export function updateSummaryOrder() {
 
     document.querySelector('.js-cart-summary').innerHTML = cartSummaryHTML;
 
+    
+
     document.querySelectorAll('.js-delete-quantity-link')
         .forEach((link) => {
             link.addEventListener('click', () => {
                 const { productId } = link.dataset;
                 removeFromCart(productId);
-
-                const productBox = document.querySelector(`.js-cart-item-box-${productId}`);
-                productBox.remove();
-                updateCartQuantity();
-                updateSummaryPayment();
+                updateCartQuantity(); // Update the cart quantity in the header
+                updateSummaryPayment(); // Update the payment summary to reflect the removed item
+                updateSummaryOrder(); // Re-render the order summary to reflect the removed item
             });
         });
 

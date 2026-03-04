@@ -28,7 +28,11 @@ export function addToCart(productId) {
     if (matchingItem) {  
         matchingItem.quantity += Number(selectedQuantity.value);     
     } else {
-        cart.push({ productId, quantity: Number(selectedQuantity.value), deliveryOptionId: '1'});
+        cart.push({ 
+            productId, 
+            quantity: Number(selectedQuantity.value), 
+            deliveryOptionId: '1'
+        });
     }
 
     saveToStorage();

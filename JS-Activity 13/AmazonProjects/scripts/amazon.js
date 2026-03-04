@@ -46,8 +46,7 @@ products.forEach((product) => {
             </div>`
 });
 
-document.querySelector('.js-products-grid')
-    .innerHTML = productHTML;
+document.querySelector('.js-products-grid').innerHTML = productHTML;
 
 // We put this outside of the function to avoid duplicating variables
 const msgAddedId = {};

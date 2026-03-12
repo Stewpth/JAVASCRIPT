@@ -1,5 +1,5 @@
-import {renderOrderSummary} from '../../scripts/checkout/orderSummary.js';
-import {loadFromStorage, cart} from '../../data/cart.js';
+import {updateSummaryOrder} from '../../scripts/checkout/orderSummary.js';
+import {loadCartFromStorage, cart} from '../../data/cart.js';
 
 describe('test suite: renderOrderSummary', () => {
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -24,14 +24,14 @@ describe('test suite: renderOrderSummary', () => {
         deliveryOptionId: '2'
       }]);
     });
-    loadFromStorage();
+    loadCartFromStorage();
 
-    renderOrderSummary();
+    updateSummaryOrder();
   });
 
   it('displays the cart', () => {
     expect(
-      document.querySelectorAll('.js-cart-item-container').length
+      document.querySelectorAll('.js-cart-item-box').length
     ).toEqual(2);
     expect(
       document.querySelector(`.js-product-quantity-${productId1}`).innerText

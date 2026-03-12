@@ -1,4 +1,4 @@
-import { cart, removeFromCart, calculateCartQuantity, updateQuantity, updateDeliveryOption } from "../../data/cart.js";
+import { cart, removeFromCart, updateQuantity, updateDeliveryOption } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../../data/deliveryOption.js";
@@ -19,7 +19,7 @@ export function updateSummaryOrder() {
         const formattedDeliveryDate = calculateDeliveryDate(deliveryOption);
 
         cartSummaryHTML += `
-            <div class="cart-item-box js-cart-item-box-${matchingProduct.productId}">
+            <div class="cart-item-box js-cart-item-box js-cart-item-box-${matchingProduct.productId}">
                 <h2 class="cart-item-delivery-text">
                     Delivery date: <span class="delivery-date">${formattedDeliveryDate}</span>
                 </h2>

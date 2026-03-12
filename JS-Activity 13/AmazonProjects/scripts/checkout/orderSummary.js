@@ -34,11 +34,26 @@ export function updateSummaryOrder() {
                         <p class="product-name">${matchingProduct.name}</p>
                         <p class="product-price">$${formatCurrency(matchingProduct.priceCents)}</p>
                         <div class="product-quantity-container">
-                            <div class="quantity-text">Quantity: <span class="quantity-value js-quantity-value-${matchingProduct.productId}">${cartItem.quantity}</span></div>
-                            <span class="update-quantity-link link-primary js-update-quantity-link" data-product-id="${matchingProduct.productId}">Update</span>
+                            <div class="quantity-text js-quantity-text-${matchingProduct.productId}">
+                                Quantity: <span class="quantity-value js-quantity-value-${matchingProduct.productId}">${cartItem.quantity}</span>
+                            </div>
+                            <span class="
+                                update-quantity-link 
+                                link-primary 
+                                js-update-quantity-link
+                            " data-product-id="${matchingProduct.productId}">Update</span>
                             <input class="quantity-input js-quantity-input-${matchingProduct.productId}">
-                            <span class="save-quantity-link link-primary js-save-quantity-link" data-product-id="${matchingProduct.productId}">Save</span>
-                            <span class="delete-quantity-link link-primary js-delete-quantity-link" data-product-id="${matchingProduct.productId}">Delete</span>
+                            <span class="
+                                save-quantity-link 
+                                link-primary 
+                                js-save-quantity-link" 
+                            data-product-id="${matchingProduct.productId}">Save</span>
+                            <span class="
+                                delete-quantity-link 
+                                link-primary 
+                                js-delete-quantity-link
+                                js-delete-quantity-link-${matchingProduct.productId}
+                            " data-product-id="${matchingProduct.productId}">Delete</span>
                         </div>
                     </div>
 
@@ -70,7 +85,6 @@ export function updateSummaryOrder() {
             link.addEventListener('click', () => {
                 const { productId } = link.dataset;
                 const container = document.querySelector(`.js-cart-item-box-${productId}`);
-
                 container.classList.add('is-editing-quantity');
             });
         });
@@ -112,7 +126,7 @@ export function updateSummaryOrder() {
         });
 }
 
-updateSummaryOrder(); // Call the function to render the cart summary on page load
+//updateSummaryOrder(); // Call the function to render the cart summary on page load
 
 /** --------------------------- FUNCTIONS --------------------------------**/
 

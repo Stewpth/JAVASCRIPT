@@ -31,8 +31,8 @@ export function updateSummaryOrder() {
 
                     <!-- Item Details -->
                     <div class="item-details">
-                        <p class="product-name">${matchingProduct.name}</p>
-                        <p class="product-price">$${formatCurrency(matchingProduct.priceCents)}</p>
+                        <p class="product-name js-product-name-${matchingProduct.productId}">${matchingProduct.name}</p>
+                        <p class="product-price js-product-price-${matchingProduct.productId}">$${formatCurrency(matchingProduct.priceCents)}</p>
                         <div class="product-quantity-container">
                             <div class="quantity-text js-quantity-text-${matchingProduct.productId}">
                                 Quantity: <span class="quantity-value js-quantity-value-${matchingProduct.productId}">${cartItem.quantity}</span>

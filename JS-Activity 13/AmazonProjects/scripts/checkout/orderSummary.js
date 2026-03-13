@@ -160,10 +160,11 @@ function generateDeliveryOption(matchingProduct, cartItem) {
         const isChecked = deliveryOption.id === cartItem.deliveryOptionId ? 'checked' : ''; // Default to the selected option being checked
         
         deliveryOptionsHTML += `
-            <div class="delivery-option-grid js-delivery-option" 
+            <div class="delivery-option-grid js-delivery-option js-delivery-option-${matchingProduct.productId}-${deliveryOption.id}" 
                 data-product-id="${matchingProduct.productId}" 
                 data-delivery-option-id="${deliveryOption.id}">
-                <input type="radio" ${isChecked} name="delivery-option-${matchingProduct.productId}" class="delivery-option-input">
+                <input type="radio" ${isChecked} name="delivery-option-${matchingProduct.productId}" 
+                class="delivery-option-input js-delivery-option-input-${matchingProduct.productId}-${deliveryOption.id}">
                 <div class="delivery-option-info">
                     <div class="delivery-option-date">${formattedDeliveryDate}</div>
                     <div class="delivery-option-price">${deliveryPrice}</div>

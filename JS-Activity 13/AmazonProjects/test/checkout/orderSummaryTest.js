@@ -57,5 +57,18 @@ describe('test suite: updateSummaryOrder', () => {
 
   afterEach(() => {
     document.querySelector('.js-test-container').innerHTML = ``;
-  })
+  });
+
+  it('update the delivery option', () => {
+    document.querySelector(`.js-delivery-option-${productId1}-${'3'}`).click();
+    const deliveryOptionInput = document.querySelector(`.js-delivery-option-input-${productId1}-${'3'}`);
+
+    expect(deliveryOptionInput.checked).toEqual(true);
+    expect(cart.length).toEqual(2);
+    expect(cart[0].productId).toEqual(productId1);
+    expect(cart[0].deliveryOptionId).toEqual('3');
+
+    expect(document.querySelector('.js-shipping-cost').innerText).toEqual('$14.98');
+    expect(document.querySelector('.js-total').innerText).toEqual('$63.50');
+  });
 });

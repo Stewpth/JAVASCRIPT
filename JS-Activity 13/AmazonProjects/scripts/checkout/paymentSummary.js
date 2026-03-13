@@ -29,7 +29,7 @@ export function updateSummaryPayment() {
     or item deletion.*/
 
     let paymentSummaryHTML =`
-        <div class="summary-order">
+        <div class="summary-order js-summary-order">
             <h3 class="order-summary">Order Summary</h3>
             <div class="payment-summary-row">
                 <div class="item-summary">Items (${totalItems}):</div>

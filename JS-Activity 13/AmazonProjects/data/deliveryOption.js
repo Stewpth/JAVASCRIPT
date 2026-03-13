@@ -55,4 +55,14 @@ function isWeekend(date) {
   return dayOfWeek === 'Saturday' || dayOfWeek === 'Sunday';
 }
 
+export function validDeliveryOption(deliveryOptionId) {
+    let found = false;
 
+    deliveryOptions.forEach((deliveryOption) => {
+        if (deliveryOption.id === deliveryOptionId) {
+            found = true;
+        }
+    });
+
+    return found;
+}

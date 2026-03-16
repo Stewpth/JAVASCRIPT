@@ -9,16 +9,18 @@ products.forEach((product) => {
     productHTML += 
         `<div class="product-box">
                 <div class="product-img-box">
-                    <img class="product-img" src="${product.img}">
+                    <img class="product-img" src="${product.getProductImg()}">
                 </div>
                 <div class="product-name">
                     ${product.name}
                 </div>
                 <div class="product-ratings">
-                    <img src="images/ratings/rating-${product.ratings.stars * 10}.png" class="product-rating-star">
-                    <p class="product-rating-count">${product.ratings.count}</p>
+                    <img src="${product.getProductRatings()}" class="product-rating-star">
+                    <p class="product-rating-count">${product.getProductRatingCounts()}</p>
                 </div>
-                <div class="product-price">$${formatCurrency(product.priceCents)}</div>
+                <div class="product-price">
+                    ${product.getPrice()}
+                </div>
                 <div class="product-quantity-container">
                     <select class="quantity-selector js-quantity-selector-${product.productId}">
                         <option value="1">1</option>

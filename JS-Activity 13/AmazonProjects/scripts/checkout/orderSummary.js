@@ -11,7 +11,7 @@ export function updateSummaryOrder() {
     cart.forEach((cartItem) => {
         const productId = cartItem.productId;
 
-        let matchingProduct = getProduct(productId);
+        const matchingProduct = getProduct(productId);
         const deliveryOptionId = cartItem.deliveryOptionId;
         const deliveryOption = getDeliveryOption(deliveryOptionId);
 
@@ -25,13 +25,13 @@ export function updateSummaryOrder() {
 
                 <div class="item-details-grid">
                     <!-- Item image -->
-                    <img class="product-image" src="${matchingProduct.img}"
+                    <img class="product-image" src="${matchingProduct.getProductImg()}"
                         alt="product-image">
 
                     <!-- Item Details -->
                     <div class="item-details">
                         <p class="product-name js-product-name-${matchingProduct.productId}">${matchingProduct.name}</p>
-                        <p class="product-price js-product-price-${matchingProduct.productId}">$${formatCurrency(matchingProduct.priceCents)}</p>
+                        <p class="product-price js-product-price-${matchingProduct.productId}">${matchingProduct.getPrice()}</p>
                         <div class="product-quantity-container">
                             <div class="quantity-text js-quantity-text-${matchingProduct.productId}">
                                 Quantity: <span class="quantity-value js-quantity-value-${matchingProduct.productId}">${cartItem.quantity}</span>

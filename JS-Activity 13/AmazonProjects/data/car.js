@@ -1,17 +1,17 @@
 class Car {
-    brand;
-    model;
+    #brand;
+    #model;
     speed;
     isTrunkOpen = false;
 
     constructor(carDetails) {
-        this.brand = carDetails.brand;
-        this.model = carDetails.model;
+        this.#brand = carDetails.brand;
+        this.#model = carDetails.model;
         this.speed = 0;
     }
 
     displayInfo() {
-        return `${this.brand} ${this.model}, Speed: ${this.speed} km/h, is the trunk open? ${this.isTrunkOpen}`;
+        return `${this.#brand} ${this.#model}, Speed: ${this.speed} km/h, is the trunk open? ${this.isTrunkOpen}`;
     }
 
     go() {
@@ -43,10 +43,14 @@ class Car {
 }
 
 class RaceCar extends Car {
+    brand;
+    model;
     acceleration;
 
     constructor(carDetails) {
         super(carDetails);
+        this.brand = carDetails.brand;
+        this.model = carDetails.model;
         this.acceleration = carDetails.acceleration;
     }
 

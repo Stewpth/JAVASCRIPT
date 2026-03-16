@@ -1,13 +1,33 @@
-export function getProduct(productId) {
-    let matchingProduct;
+export function getProduct(productId, testProduct) {
+    if (!testProduct) {
+        let matchingProduct;
 
-    products.forEach((product) => {
-        if (product.productId === productId) {
-            matchingProduct = product;
+        products.forEach((product) => {
+            if (product.productId === productId) {
+                matchingProduct = product;
+            }
+        });
+
+        if (!matchingProduct) {
+            return
         }
-    });
 
-    return matchingProduct;
+        return matchingProduct;
+    } else {
+        let matchingProduct;
+
+        testProduct.forEach((product) => {
+            if (product.productId === productId) {
+                matchingProduct = product;
+            }
+        });
+
+        if (!matchingProduct) {
+            return
+        }
+
+        return matchingProduct;
+    } 
 }
 
 export const products = [

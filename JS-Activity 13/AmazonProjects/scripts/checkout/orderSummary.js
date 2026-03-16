@@ -5,8 +5,7 @@ import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../..
 import { updateSummaryPayment } from "./paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeaders.js";
 
-export function updateSummaryOrder() {
-    
+export function updateSummaryOrder() { 
     let cartSummaryHTML = '';
 
     cart.forEach((cartItem) => {

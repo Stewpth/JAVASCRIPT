@@ -79,11 +79,11 @@ export class Product {
 }
 
 export class Clothing extends Product {
-    sizeChartLink
+    sizeChartLink;
 
     constructor(productDetails) {
         super(productDetails)
-        this.sizeChartLink;
+        this.sizeChartLink = productDetails.sizeChartLink;
     }
 
     extraInfoHTML() {
@@ -101,12 +101,11 @@ export class Appliance extends Product {
         this.warrantyLink = productDetails.warrantyLink;
     }
 
-    getInstructionURL() {
-        return `<a href="${this.instructionsLink}" target="_blank">Instruction</a>`;
-    }
-
-    getWarrantyURL() {
-        return `<a href="${this.warrantyLink}" target="_blank">Warranty</a>`;
+    extraInfoHTML() {
+        return `
+            <a href="${this.instructionsLink}" target="_blank">Instruction</a>
+            <a href="${this.warrantyLink}" target="_blank">Warranty</a>
+        `;
     }
 }
 
@@ -140,7 +139,8 @@ export const products = [
             count: 56
         },
         priceCents: 1899,
-        type: 'clothing'
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: 'ba346863-ab37-41e7-8aff-4e3b6890e1f5',
@@ -184,7 +184,8 @@ export const products = [
             count: 317
         },
         priceCents: 2400,
-        type: 'clothing'
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: 'ebec987b-5830-4f60-9687-58a519852b8c',
@@ -224,7 +225,9 @@ export const products = [
             stars: 4,
             count: 235
         },
-        priceCents: 2070
+        priceCents: 2070,
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: '6fc52c55-b547-4f94-a9e4-ebb93a3b3ab6',
@@ -264,7 +267,9 @@ export const products = [
             stars: 4,
             count: 160
         },
-        priceCents: 1699
+        priceCents: 1699,
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: '934d1b98-9ff0-4c11-badd-369e65ef0f3e',
@@ -317,7 +322,9 @@ export const products = [
             stars: 4.5,
             count: 2465
         },
-        priceCents: 1374
+        priceCents: 1374,
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: '97206dc5-738b-4254-9849-e5876ce33d01',
@@ -347,7 +354,9 @@ export const products = [
             stars: 4.5,
             count: 2556
         },
-        priceCents: 1599
+        priceCents: 1599,
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: '0e2c36ee-a59b-47f4-9ae6-6d03620c1b50',
@@ -387,7 +396,9 @@ export const products = [
             stars: 4.5,
             count: 9017
         },
-        priceCents: 2290
+        priceCents: 2290,
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: 'ce6fa05f-9e6c-4f41-a935-d355f3700029',
@@ -437,7 +448,9 @@ export const products = [
             stars: 4.5,
             count: 248
         },
-        priceCents: 2400
+        priceCents: 2400,
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
     {   
         productId: '79323d60-29c0-496d-b46c-9a5e6aa4dde4',
@@ -540,7 +553,9 @@ export const products = [
             stars: 4.5,
             count: 3157
         },
-        priceCents: 2400
+        priceCents: 2400,
+        type: 'clothing',
+        sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     },
 ].map((productDetails) => {
     if (productDetails.type === 'appliances') {

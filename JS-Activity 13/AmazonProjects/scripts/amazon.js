@@ -36,8 +36,7 @@ products.forEach((product) => {
                     </select>
                 </div>
 
-                ${product.getInstructionURL()} 
-                ${product.getWarrantyURL()}
+                ${product.extraInfoHTML()}
 
                 <div class="added-to-cart-msg js-added-to-cart-msg-id-${product.productId}">
                     <img src="images/Function-img/checkmark.png" class="added-icon">

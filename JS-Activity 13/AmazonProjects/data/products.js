@@ -32,12 +32,13 @@ export function getProduct(productId, testProduct) {
     } 
 }
 
-class Product {
+export class Product {
     productId;
     img;
     name;
     ratings;
     priceCents;
+    type;
 
     constructor(productDetails) {
         this.productId = productDetails.productId;
@@ -45,6 +46,7 @@ class Product {
         this.name = productDetails.name;
         this.ratings = productDetails.ratings;
         this.priceCents = productDetails.priceCents;
+        this.type = productDetails.type;
     }
 
     getProductImg() {
@@ -61,6 +63,50 @@ class Product {
 
     getPrice() {
         return `$${formatCurrency(this.priceCents)}`;
+    }
+
+    getInstructionURL() {
+        return ``;
+    }
+
+    getWarrantyURL() {
+        return ``;
+    }
+
+    extraInfoHTML() {
+        return ``;
+    }
+}
+
+export class Clothing extends Product {
+    sizeChartLink
+
+    constructor(productDetails) {
+        super(productDetails)
+        this.sizeChartLink;
+    }
+
+    extraInfoHTML() {
+        return `<a href="${this.sizeChartLink}">Size chart</a>`;
+    }
+}
+
+export class Appliance extends Product {
+    instructionsLink;
+    warrantyLink;
+
+    constructor(productDetails) {
+        super(productDetails);
+        this.instructionsLink = productDetails.instructionsLink;
+        this.warrantyLink = productDetails.warrantyLink;
+    }
+
+    getInstructionURL() {
+        return `<a href="${this.instructionsLink}" target="_blank">Instruction</a>`;
+    }
+
+    getWarrantyURL() {
+        return `<a href="${this.warrantyLink}" target="_blank">Warranty</a>`;
     }
 }
 
@@ -93,7 +139,8 @@ export const products = [
             stars: 4.5,
             count: 56
         },
-        priceCents: 1899
+        priceCents: 1899,
+        type: 'clothing'
     },
     {   
         productId: 'ba346863-ab37-41e7-8aff-4e3b6890e1f5',
@@ -103,7 +150,10 @@ export const products = [
             stars: 5,
             count: 2197
         },
-        priceCents: 1899
+        priceCents: 1899,
+        type: 'appliances',
+        instructionsLink: 'image/Function-img/appliance-instructions.png',
+        warrantyLink: 'image/Function-img/appliance-warranty.png'
     },
     {   
         productId: '0fc56cab-ff86-403b-965e-69ab6e1bd62d',
@@ -133,7 +183,8 @@ export const products = [
             stars: 4.5,
             count: 317
         },
-        priceCents: 2400 
+        priceCents: 2400,
+        type: 'clothing'
     },
     {   
         productId: 'ebec987b-5830-4f60-9687-58a519852b8c',
@@ -223,7 +274,10 @@ export const products = [
             stars: 5,
             count: 846
         },
-        priceCents: 3074
+        priceCents: 3074,
+        type: 'appliances',
+        instructionsLink: 'image/Function-img/appliance-instructions.png',
+        warrantyLink: 'image/Function-img/appliance-warranty.png'
     },
     {
         productId: '98e681c0-a11e-4aa6-91e5-f1d805b7dcc8',
@@ -453,7 +507,10 @@ export const products = [
             stars: 4,
             count: 3
         },
-        priceCents: 10747
+        priceCents: 10747,
+        type: 'appliances',
+        instructionsLink: 'image/Function-img/appliance-instructions.png',
+        warrantyLink: 'image/Function-img/appliance-warranty.png'
     },
     {   
         productId: 'dfa6ccba-e57a-424e-9cad-3b376ac96505',
@@ -486,5 +543,11 @@ export const products = [
         priceCents: 2400
     },
 ].map((productDetails) => {
+    if (productDetails.type === 'appliances') {
+        return new Appliance(productDetails);
+    } else if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+    }
+
     return new Product(productDetails);
 });

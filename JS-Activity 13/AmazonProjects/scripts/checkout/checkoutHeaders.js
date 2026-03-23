@@ -1,7 +1,9 @@
-import { calculateCartQuantity } from "../../data/cart.js";
+import { Cart } from "../../data/cart-class.js";
+
+const cart = new Cart;
 
 export function renderCheckoutHeader() {
-    const cartQuantity = calculateCartQuantity();
+    const cartQuantity = cart.calculateCartQuantity();
 
     const headerHTML = `
         <section class="left-section">

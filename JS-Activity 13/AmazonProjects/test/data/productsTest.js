@@ -88,7 +88,7 @@ describe('Test suite: Class from product.js', () => {
     });
 
     describe('class Products', () => {
-        it('check the class Clothing if the data is correct', () => {
+        it('check the class Product if the data is correct', () => {
             expect(testProduct[2].productId).toEqual('test3');
             expect(testProduct[2].img).toEqual('img3');
             expect(testProduct[2].name).toEqual('product 3');
@@ -103,7 +103,7 @@ describe('Test suite: Class from product.js', () => {
             expect(testProduct[2].sizeChartLink).toEqual(undefined);
         });
 
-        it('check the method of the class Clothing if its correct', () => {
+        it('check the method of the class Product if its correct', () => {
             expect (testProduct[2].getProductImg()).toEqual('img3');
             expect (testProduct[2].getProductRatings()).toContain(
                 `images/ratings/rating`

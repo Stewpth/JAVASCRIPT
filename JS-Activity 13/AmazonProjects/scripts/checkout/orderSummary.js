@@ -1,16 +1,14 @@
-import { cart } from "../../data/cart-class.js"
 import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../../data/deliveryOption.js";
 import { updateSummaryPayment } from "./paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeaders.js";
 
-console.log(cart);
 
-export function updateSummaryOrder() { 
+export function updateSummaryOrder(cartName) { 
     let cartSummaryHTML = '';
 
-    cart.cartItems.forEach((cartItem) => {
+    cartName.cartItems.forEach((cartItem) => {
         const productId = cartItem.productId;
 
         const matchingProduct = getProduct(productId);
@@ -74,10 +72,10 @@ export function updateSummaryOrder() {
         .forEach((link) => {
             link.addEventListener('click', () => {
                 const { productId } = link.dataset;
-                cart.removeFromCart(productId);
+                cartName.removeFromCart(productId);
                 renderCheckoutHeader(); // Update the header to reflect the new cart quantity after deletion
                 updateSummaryPayment(); // Update the payment summary to reflect the removed item
-                updateSummaryOrder(); // Re-render the order summary to reflect the removed item
+                updateSummaryOrder(cartName); // Re-render the order summary to reflect the removed item
             });
         });
 
@@ -102,7 +100,7 @@ export function updateSummaryOrder() {
                 handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
                 updateSummaryPayment(); // Update the payment summary to reflect the new quantity
                 renderCheckoutHeader(); // Update the header to reflect the new cart quantity after quantity update
-                updateSummaryOrder(); // Re-render the order summary to reflect the new quantity
+                updateSummaryOrder(cartName); // Re-render the order summary to reflect the new quantity
             });
 
             itemQuantityInput.addEventListener('keydown', (event) => {
@@ -110,7 +108,7 @@ export function updateSummaryOrder() {
                     handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
                     updateSummaryPayment();
                     renderCheckoutHeader();
-                    updateSummaryOrder();
+                    updateSummaryOrder(cartName);
                 }
             });
         });
@@ -119,8 +117,8 @@ export function updateSummaryOrder() {
         .forEach((option) => {
             option.addEventListener('click', () => {
                 const { productId, deliveryOptionId } = option.dataset;
-                cart.updateDeliveryOption(productId, deliveryOptionId);
-                updateSummaryOrder();
+                cartName.updateDeliveryOption(productId, deliveryOptionId);
+                updateSummaryOrder(cartName);
                 updateSummaryPayment();
                 renderCheckoutHeader();
             });
@@ -142,7 +140,7 @@ function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, c
     }
 
     itemQuantityValue.innerHTML = newQuantity;
-    cart.updateQuantity(productId, newQuantity);
+    cartName.updateQuantity(productId, newQuantity);
 
     container.classList.remove('is-editing-quantity');
     itemQuantityInput.value = '';

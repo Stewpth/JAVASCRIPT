@@ -1,5 +1,7 @@
 import { updateSummaryOrder } from "../../scripts/checkout/orderSummary.js";
-import { loadCartFromStorage, cart } from "../../data/cart.js";
+import { Cart } from "../../data/cart-class.js";
+
+const cartTestOrderSummary = new Cart('cart-order-summary-test');
 
 describe('test suite: updateSummaryOrder', () => {
   const productId1 = 'f3deefd6-c8c4-4302-90ab-58c637764eea';
@@ -28,9 +30,9 @@ describe('test suite: updateSummaryOrder', () => {
         deliveryOptionId: '2'
       }]);
     });
-    loadCartFromStorage();
+    cartTestOrderSummary.loadCartFromStorage();
 
-    updateSummaryOrder();
+    updateSummaryOrder(cartTestOrderSummary);
   });
 
   it('displays the cart', () => {
@@ -51,8 +53,8 @@ describe('test suite: updateSummaryOrder', () => {
     expect(document.querySelectorAll('.js-cart-item-box').length).toEqual(1);
     expect(document.querySelector(`.js-cart-item-box-${productId1}`)).toEqual(null);
     expect(document.querySelector(`.js-cart-item-box-${productId2}`)).not.toEqual(null);
-    expect(cart.length).toEqual(1);
-    expect(cart[0].productId).toEqual(productId2);
+    expect(cartTestOrderSummary.cartItems.length).toEqual(1);
+    expect(cartTestOrderSummary.cartItems[0].productId).toEqual(productId2);
   });
 
   afterEach(() => {
@@ -64,9 +66,9 @@ describe('test suite: updateSummaryOrder', () => {
     const deliveryOptionInput = document.querySelector(`.js-delivery-option-input-${productId1}-${'3'}`);
 
     expect(deliveryOptionInput.checked).toEqual(true);
-    expect(cart.length).toEqual(2);
-    expect(cart[0].productId).toEqual(productId1);
-    expect(cart[0].deliveryOptionId).toEqual('3');
+    expect(cartTestOrderSummary.cartItems.length).toEqual(2);
+    expect(cartTestOrderSummary.cartItems[0].productId).toEqual(productId1);
+    expect(cartTestOrderSummary.cartItems[0].deliveryOptionId).toEqual('3');
 
     expect(document.querySelector('.js-shipping-cost').innerText).toEqual('$14.98');
     expect(document.querySelector('.js-total').innerText).toEqual('$63.50');

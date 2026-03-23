@@ -1,14 +1,16 @@
-import { cart, removeFromCart, updateQuantity, updateDeliveryOption } from "../../data/cart.js";
+import { cart } from "../../data/cart-class.js"
 import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from "../../data/deliveryOption.js";
 import { updateSummaryPayment } from "./paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeaders.js";
 
+console.log(cart);
+
 export function updateSummaryOrder() { 
     let cartSummaryHTML = '';
 
-    cart.forEach((cartItem) => {
+    cart.cartItems.forEach((cartItem) => {
         const productId = cartItem.productId;
 
         const matchingProduct = getProduct(productId);
@@ -72,7 +74,7 @@ export function updateSummaryOrder() {
         .forEach((link) => {
             link.addEventListener('click', () => {
                 const { productId } = link.dataset;
-                removeFromCart(productId);
+                cart.removeFromCart(productId);
                 renderCheckoutHeader(); // Update the header to reflect the new cart quantity after deletion
                 updateSummaryPayment(); // Update the payment summary to reflect the removed item
                 updateSummaryOrder(); // Re-render the order summary to reflect the removed item
@@ -117,7 +119,7 @@ export function updateSummaryOrder() {
         .forEach((option) => {
             option.addEventListener('click', () => {
                 const { productId, deliveryOptionId } = option.dataset;
-                updateDeliveryOption(productId, deliveryOptionId);
+                cart.updateDeliveryOption(productId, deliveryOptionId);
                 updateSummaryOrder();
                 updateSummaryPayment();
                 renderCheckoutHeader();
@@ -140,7 +142,7 @@ function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, c
     }
 
     itemQuantityValue.innerHTML = newQuantity;
-    updateQuantity(productId, newQuantity);
+    cart.updateQuantity(productId, newQuantity);
 
     container.classList.remove('is-editing-quantity');
     itemQuantityInput.value = '';
@@ -171,6 +173,6 @@ function generateDeliveryOption(matchingProduct, cartItem) {
             </div>
         `
     });
-
+    
     return deliveryOptionsHTML;
 }

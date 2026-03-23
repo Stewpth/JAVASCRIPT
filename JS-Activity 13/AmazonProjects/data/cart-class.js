@@ -2,10 +2,15 @@ import { validDeliveryOption } from "./deliveryOption.js";
 import "./car.js";
 
 export class Cart {
-    cart;
+    cartItems = undefined;
+    localStorageKey = undefined;
+
+    constructor(localStorageKey) {
+        this.localStorageKey = localStorageKey;
+    }
 
     loadCartFromStorage() {
-        cart = JSON.parse(localStorage.getItem('cart')) || [{
+        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)) || [{
             productId: 'f3deefd6-c8c4-4302-90ab-58c637764eea',
             quantity: 2,
             deliveryOptionId: '1'
@@ -17,7 +22,7 @@ export class Cart {
     }
 
     saveToStorage() {
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
     }
 
     addToCart(productId) {
@@ -25,7 +30,7 @@ export class Cart {
 
         let matchingItem;
             
-        cart.forEach((item) => {
+        this.cartItems.forEach((item) => {
             if (productId === item.productId) {
                 matchingItem = item;
             }
@@ -38,7 +43,7 @@ export class Cart {
             if (matchingItem) {  
                 matchingItem.quantity += Number(selectedQuantity.value);     
             } else {
-                cart.push({ 
+                this.cartItems.push({ 
                     productId, 
                     quantity: Number(selectedQuantity.value), 
                     deliveryOptionId: '1'
@@ -48,7 +53,7 @@ export class Cart {
             if (matchingItem) {  
                 matchingItem.quantity += 1;     
             } else {
-                cart.push({ 
+                this.cartItems.push({ 
                     productId, 
                     quantity: 1, 
                     deliveryOptionId: '1'
@@ -56,26 +61,26 @@ export class Cart {
             }
         }
 
-        saveToStorage();
+        this.saveToStorage();
     };
 
     removeFromCart(productId) {
         const newCart = [];
 
-        cart.forEach((cartItem) => {
+        this.cartItems.forEach((cartItem) => {
             if (cartItem.productId !== productId) {
                 newCart.push(cartItem);
             }
         });
 
-        cart = newCart;
-        saveToStorage();
+        this.cartItems = newCart;
+        this.saveToStorage();
     };
 
     calculateCartQuantity() {
         let cartQuantity = 0;
 
-        cart.forEach((cartItem) => {
+        this.cartItems.forEach((cartItem) => {
             cartQuantity += cartItem.quantity;
         });
 
@@ -85,7 +90,7 @@ export class Cart {
     updateQuantity(productId, newQuantity) {
         let matchingItem;
             
-        cart.forEach((item) => {
+        this.cartItems.forEach((item) => {
             if (productId === item.productId) {
                 matchingItem = item;
             }
@@ -95,7 +100,7 @@ export class Cart {
             matchingItem.quantity = newQuantity;
         }
 
-        saveToStorage();
+        this.saveToStorage();
 
         return newQuantity;
     }
@@ -103,7 +108,7 @@ export class Cart {
     updateDeliveryOption(productId, deliveryOptionId) {
         let matchingItem;
             
-        cart.forEach((item) => {
+        this.cartItems.forEach((item) => {
             if (productId === item.productId) {
                 matchingItem = item;
             }
@@ -119,11 +124,11 @@ export class Cart {
 
         matchingItem.deliveryOptionId = deliveryOptionId;
 
-        saveToStorage();
+        this.saveToStorage();
     }
 }
 
-export let cart = new Cart;
+export let cart = new Cart('cart-class');
 
 cart.loadCartFromStorage();
 

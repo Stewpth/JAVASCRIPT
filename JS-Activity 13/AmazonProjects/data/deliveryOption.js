@@ -32,7 +32,7 @@ export function getDeliveryOption(deliveryOptionId) {
 // and we calculate the delivery date by adding the 
 // remaining days to the current date, and we skip the weekends.
 export function calculateDeliveryDate(deliveryOption) {
-    let remainingDays = deliveryOption.deliveryDays;
+    let remainingDays = deliveryOption.deliveryDate;
     let deliveryDate = dayjs();
 
     while (remainingDays > 0) {
@@ -65,4 +65,4 @@ export function validDeliveryOption(deliveryOptionId) {
     });
 
     return found;
-}
+} 

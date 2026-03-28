@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18b activity</title>
+</head>
+
+<body>
+    <script>
+        let greet = '';
+
+        const getData = fetch('https://supersimplebackend.dev/greeting');
+
+        getData.then((response) => {
+            return response.text();
+        }).then((greetMessage) => {
+            greet = greetMessage;
+        }).then(() => {
+            console.log(greet);
+        });
+    </script>
+</body>
+
+</html>

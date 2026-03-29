@@ -5,6 +5,11 @@ export let cart;
 
 loadCartFromStorage();
 
+async function loadCartFetch(func) {
+    const response = await fetch('https://supersimplebackend.dev/cart');
+
+}
+
 export function loadCartFromStorage() {
     cart = JSON.parse(localStorage.getItem('cart')) || [{
         productId: 'f3deefd6-c8c4-4302-90ab-58c637764eea',

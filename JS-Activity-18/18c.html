@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18c Activity</title>
+</head>
+
+<body>
+    <script>
+        async function greetUser() {
+            const getData = await fetch('https://supersimplebackend.dev/greeting');
+            const response = await getData.text();
+            console.log(response);
+        }
+
+        greetUser();
+    </script>
+</body>
+
+</html>

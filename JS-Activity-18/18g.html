@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18g ACtivity</title>
+</head>
+
+<body>
+    <script>
+        async function getData() {
+            try {
+                const response = await fetch(
+                    'https://supersimplebackend.dev/greeting',
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    });
+
+
+                if (response.status >= 400) {
+                    throw response;
+                }
+
+                const data = await response.json();
+                console.log(data);
+
+            } catch (error) {
+                if (error.status === 400) {
+                    const errorStats = await error.json();
+                    console.log(errorStats);
+                } else {
+                    console.log('Network error. Please try again later');
+                }
+            }
+        }
+
+        getData();
+    </script>
+</body>
+
+</html>

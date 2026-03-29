@@ -7,7 +7,10 @@ loadCartFromStorage();
 
 async function loadCartFetch(func) {
     const response = await fetch('https://supersimplebackend.dev/cart');
+    const cartData = await response.json();
 
+    console.log(await cartData);
+    func();
 }
 
 export function loadCartFromStorage() {

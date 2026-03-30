@@ -73,8 +73,8 @@ export function updateSummaryOrder(cartName) {
             link.addEventListener('click', () => {
                 const { productId } = link.dataset;
                 cartName.removeFromCart(productId);
-                renderCheckoutHeader(); // Update the header to reflect the new cart quantity after deletion
-                updateSummaryPayment(); // Update the payment summary to reflect the removed item
+                renderCheckoutHeader(cartName); // Update the header to reflect the new cart quantity after deletion
+                updateSummaryPayment(cartName); // Update the payment summary to reflect the removed item
                 updateSummaryOrder(cartName); // Re-render the order summary to reflect the removed item
             });
         });
@@ -98,16 +98,16 @@ export function updateSummaryOrder(cartName) {
             
             link.addEventListener('click', () => {
                 handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container, cartName);
-                updateSummaryPayment(); // Update the payment summary to reflect the new quantity
-                renderCheckoutHeader(); // Update the header to reflect the new cart quantity after quantity update
+                updateSummaryPayment(cartName); // Update the payment summary to reflect the new quantity
+                renderCheckoutHeader(cartName); // Update the header to reflect the new cart quantity after quantity update
                 updateSummaryOrder(cartName); // Re-render the order summary to reflect the new quantity
             });
 
             itemQuantityInput.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container, cartName);
-                    updateSummaryPayment();
-                    renderCheckoutHeader();
+                    updateSummaryPayment(cartName);
+                    renderCheckoutHeader(cartName);
                     updateSummaryOrder(cartName);
                 }
             });
@@ -119,8 +119,8 @@ export function updateSummaryOrder(cartName) {
                 const { productId, deliveryOptionId } = option.dataset;
                 cartName.updateDeliveryOption(productId, deliveryOptionId);
                 updateSummaryOrder(cartName);
-                updateSummaryPayment();
-                renderCheckoutHeader();
+                updateSummaryPayment(cartName);
+                renderCheckoutHeader(cartName);
             });
         });
 }

@@ -3,12 +3,12 @@ import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOption.js";
 import { formatCurrency } from "../utils/money.js";
 
-export function updateSummaryPayment() {
+export function updateSummaryPayment(cartName) {
     let cartQuantity = 0;
     let productPriceCents = 0;
     let shippingCostCents = 0;
 
-    cart.cartItems.forEach((cartItem) => {
+    cartName.cartItems.forEach((cartItem) => {
         const product = getProduct(cartItem.productId);
         productPriceCents += product.priceCents * cartItem.quantity; // Calculate total product price based on quantity
 

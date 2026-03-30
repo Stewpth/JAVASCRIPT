@@ -18,25 +18,24 @@ describe('test suite: updateSummaryOrder', () => {
   });
 
   beforeEach(() => {
-    spyOn(localStorage, 'setItem');
-
     document.querySelector('.js-test-container').innerHTML = `
       <div class="js-cart-summary"></div>
       <div class="js-payment-info"></div>
       <div class="js-checkout-headers"></div>
     `;
 
-    spyOn(localStorage, 'getItem').and.callFake(() => {
-      return JSON.stringify([{
+    localStorage.setItem('cart-order-summary-test', JSON.stringify([
+      {
         productId: productId1,
         quantity: 2,
         deliveryOptionId: '1'
-      }, {
+      },
+      {
         productId: productId2,
         quantity: 1,
         deliveryOptionId: '2'
-      }]);
-    });
+      }
+    ]));
 
     cartTestOrderSummary.loadCartFromStorage();
 
@@ -82,3 +81,5 @@ describe('test suite: updateSummaryOrder', () => {
     document.querySelector('.js-test-container').innerHTML = ``;
   });
 });
+
+console.log(cartTestOrderSummary.cartItems);

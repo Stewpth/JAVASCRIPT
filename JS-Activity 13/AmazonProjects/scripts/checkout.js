@@ -16,8 +16,8 @@ async function loadPage() {
     ]);
 
     updateSummaryOrder(cart);
-    updateSummaryPayment();
-    renderCheckoutHeader();
+    updateSummaryPayment(cart);
+    renderCheckoutHeader(cart);
 }
 
 loadPage();

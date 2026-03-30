@@ -45,11 +45,11 @@ describe('Test suite: getProduct', () => {
 });
 
 describe('Test suite: Class from product.js', () => {
-    const testProduct = [{
-        productId: 'test1',
-        img: 'img1',
+   const testProduct = [{
+        id: 'test1',
+        image: 'img1',
         name: 'product 1',
-        ratings: {
+        rating: {
             stars: 4.5,
             count: 87
         },
@@ -58,10 +58,10 @@ describe('Test suite: Class from product.js', () => {
         instructionsLink: 'image/Function-img/appliance-instructions.png',
         warrantyLink: 'image/Function-img/appliance-warranty.png'
     }, {
-        productId: 'test2',
-        img: 'img2',
+        id: 'test2',
+        image: 'img2',
         name: 'product 2',
-        ratings: {
+        rating: {
             stars: 5.0,
             count: 87
         },
@@ -69,15 +69,16 @@ describe('Test suite: Class from product.js', () => {
         type: 'clothing',
         sizeChartLink: 'images/Function-img/clothing-size-chart.png'
     }, {
-        productId: 'test3',
-        img: 'img3',
+        id: 'test3',
+        image: 'img3',
         name: 'product 3',
-        ratings: {
+        rating: {
             stars: 4.2,
             count: 70
         },
         priceCents: 1090,
     }].map((productDetails) => {
+        console.log(productDetails);
         if (productDetails.type === 'appliances') {
             return new Appliance(productDetails);
         } else if (productDetails.type === 'clothing') {

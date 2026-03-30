@@ -101,12 +101,26 @@ export function loadProducts(fun) {
     xhr.send();
 }
 
-export function loadProductsFetch(fun) {
+export function loadProductsFetch() {
     const promise = fetch('https://supersimplebackend.dev/products');
 
-    promise.then(() => {
-        
-    })
+    promise.then((response) => {
+        return response.json();
+    }).then((productsData) => {
+        products = productsData.map((productDetails) => {
+            if (productDetails.type === 'appliances') {
+                return new Appliance(productDetails);
+            } else if (productDetails.type === 'clothing') {
+                return new Clothing(productDetails);
+            }
+
+            return new Product(productDetails);
+        });
+
+        console.log('load products');
+    });
+
+    return promise;
 }
 
 export function getProduct(productId, testProduct) {

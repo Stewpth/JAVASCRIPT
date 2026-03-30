@@ -93,12 +93,20 @@ export function loadProducts(fun) {
             return new Product(productDetails);
         });
 
-        console.log(xhr.response);
+        console.log('load products');
         fun();
     });
 
     xhr.open('GET', 'https://supersimplebackend.dev/products');
     xhr.send();
+}
+
+export function loadProductsFetch(fun) {
+    const promise = fetch('https://supersimplebackend.dev/products');
+
+    promise.then(() => {
+        
+    })
 }
 
 export function getProduct(productId, testProduct) {

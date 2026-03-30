@@ -1,37 +1,5 @@
 import {formatCurrency} from '../scripts/utils/money.js';;
 
-export function getProduct(productId, testProduct) {
-    if (!testProduct) {
-        let matchingProduct;
-
-        products.forEach((product) => {
-            if (product.productId === productId) {
-                matchingProduct = product;
-            }
-        });
-
-        if (!matchingProduct) {
-            return
-        }
-
-        return matchingProduct;
-    } else {
-        let matchingProduct;
-
-        testProduct.forEach((product) => {
-            if (product.productId === productId) {
-                matchingProduct = product;
-            }
-        });
-
-        if (!matchingProduct) {
-            return
-        }
-
-        return matchingProduct;
-    } 
-}
-
 export class Product {
     productId;
     img;
@@ -131,6 +99,38 @@ export function loadProducts(fun) {
 
     xhr.open('GET', 'https://supersimplebackend.dev/products');
     xhr.send();
+}
+
+export function getProduct(productId, testProduct) {
+    if (!testProduct) {
+        let matchingProduct;
+
+        products.forEach((product) => {
+            if (product.productId === productId) {
+                matchingProduct = product;
+            }
+        });
+
+        if (!matchingProduct) {
+            return
+        }
+
+        return matchingProduct;
+    } else {
+        let matchingProduct;
+
+        testProduct.forEach((product) => {
+            if (product.productId === productId) {
+                matchingProduct = product;
+            }
+        });
+
+        if (!matchingProduct) {
+            return
+        }
+
+        return matchingProduct;
+    } 
 }
 
 /*

@@ -97,7 +97,7 @@ export function updateSummaryOrder(cartName) {
             
             
             link.addEventListener('click', () => {
-                handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
+                handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container, cartName);
                 updateSummaryPayment(); // Update the payment summary to reflect the new quantity
                 renderCheckoutHeader(); // Update the header to reflect the new cart quantity after quantity update
                 updateSummaryOrder(cartName); // Re-render the order summary to reflect the new quantity
@@ -105,7 +105,7 @@ export function updateSummaryOrder(cartName) {
 
             itemQuantityInput.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
-                    handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container);
+                    handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container, cartName);
                     updateSummaryPayment();
                     renderCheckoutHeader();
                     updateSummaryOrder(cartName);
@@ -130,7 +130,7 @@ export function updateSummaryOrder(cartName) {
 /** --------------------------- FUNCTIONS --------------------------------**/
 
 // for update link purposes....
-function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container) {
+function handleUpdateQuantity(productId, itemQuantityInput, itemQuantityValue, container, cartName) {
     const newQuantity = Number(itemQuantityInput.value);
 
     if (newQuantity < 0 || newQuantity >= 1000) {

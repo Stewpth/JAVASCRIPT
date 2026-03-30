@@ -37,6 +37,7 @@ describe('test suite: updateSummaryOrder', () => {
         deliveryOptionId: '2'
       }]);
     });
+
     cartTestOrderSummary.loadCartFromStorage();
 
     updateSummaryOrder(cartTestOrderSummary);

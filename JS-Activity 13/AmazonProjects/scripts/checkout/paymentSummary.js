@@ -2,6 +2,7 @@ import { cart } from "../../data/cart-class.js";
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOption.js";
 import { formatCurrency } from "../utils/money.js";
+import { postOrder } from "../orders.js";
 
 export function updateSummaryPayment(cartName) {
     let cartQuantity = 0;
@@ -55,11 +56,15 @@ export function updateSummaryPayment(cartName) {
         </div>
 
         <div class="place-order-box">
-            <button class="place-order-btn button-primary">
+            <button class="place-order-btn button-primary js-place-order-btn">
                 Place your order
             </button>
         </div>
     `;
 
     document.querySelector('.js-payment-info').innerHTML = paymentSummaryHTML;
+
+    document.querySelector('.js-place-order-btn').addEventListener('click', () => {
+        postOrder(cart);
+    });
 }

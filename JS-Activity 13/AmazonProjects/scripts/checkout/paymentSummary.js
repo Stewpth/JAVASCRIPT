@@ -2,7 +2,7 @@ import { cart } from "../../data/cart-class.js";
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOption.js";
 import { formatCurrency } from "../utils/money.js";
-import { postOrder } from "../orders.js";
+import { postOrder } from "../../data/orders.js";
 
 export function updateSummaryPayment(cartName) {
     let cartQuantity = 0;

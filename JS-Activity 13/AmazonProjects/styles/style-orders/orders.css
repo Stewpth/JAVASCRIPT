@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main.main-content {
+  margin-top: 90px;
+}
+
+.main-title {
+  font-size: 26px;
+}

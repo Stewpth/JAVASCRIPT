@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <!--Roboto Fonts for better looks-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/general.css">
+    <!-- Styles for the headers -->
+    <link rel="stylesheet" href="styles/style-amazon/amazon-headers.css">
+    <!-- Styles for the main content -->
+    <link rel="stylesheet" href="styles/style-orders/orders.css">
+</head>
+
+<body>
+    <!-- HEADERS AMAZON-->
+    <header class="amazon-header">
+        <section class="left-section">
+            <a href="amazon.html" class="home-btn">
+                <img class="amazon-logo" src="images/header-image/amazon-logo-white.png" alt="amazon-logo">
+                <img class="amazon-logo-mobile" src="images/header-image/amazon-mobile-logo-white.png"
+                    alt="amazon-logo-mobile">
+            </a>
+        </section>
+        <section class="middle-section">
+            <input type="search" class="search-bar" placeholder="Search">
+            <button class="search-btn">
+                <img src="images/header-image/search-icon.png" alt="amazon-search-icon" class="search-icon">
+            </button>
+        </section>
+        <section class="right-section">
+            <a class="order-link">
+                <p class="return-text">Returns</p>
+                <p class="order-text">& Orders</p>
+            </a>
+            <a class="cart-btn header-link" href="checkout.html">
+                <img class="cart-icon" src="images/header-image/cart-icon.png" alt="cart-icon">
+                <div class="cart-quantity js-cart-quantity">2</div>
+                <div class="cart-name">Cart</div>
+            </a>
+        </section>
+
+        <section class="right-section-mobile">
+            <img class="hamburger-menu-toggle js-hamburger-menu-toggle" src="images/header-image/hamburger-menu.png"
+                alt="hamburger-menu">
+        </section>
+        <div class="hamburger-menu-dropdown js-hamburger-menu-dropdown">
+            <a class="hamburger-menu-link js-orders-btn">Returns & Orders</a>
+            <a class="hamburger-menu-link js-cart-btn">Cart (<p class="cart-quantity-mobile js-cart-quantity-mobile">3
+                </p>) </a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="main-title">Your Orders</h1>
+
+        <section class="orders-grid">
+            <article class="order-container">
+                <header class="order-headers">
+                    <section class="left-header-side">
+                        <div class="order-date">
+                            <span class="order-header-label">Order Placed:</span>
+                            <span class="order-header-text">March 31</span>
+                        </div>
+                        <div class="order-total-cost">
+                            <span class="order-header-label">Total:</span>
+                            <span class="order-header-text">$83.56</span>
+                        </div>
+                    </section>
+                    <section class="right-header-side">
+                        <div class="order-id">
+                            <span class="order-header-label">Order ID:</span>
+                            <span class="order-header-text">f59deaf6-e522-17e0-af5a-a1cea7173aef</span>
+                        </div>
+                    </section>
+                </header>
+
+                <div class="order-details-grid">
+                    <img src="images/products/6-piece-non-stick-baking-set.webp" alt="item-image">
+                    <div class="product-details">
+                        <span class="product-name">Black and Gray Athletic Cotton Socks - 6 Pairs</span>
+                        <span class="product-delivery-date">Delivered on: March 12</span>
+                        <span class="product-quantity">Quantity: 4</span>
+                        <button class="buy-again-button">
+                            <img src="images/Function-Img/buy-again.png" alt="buy-again-button">
+                            <span class="buy-again-message">Buy it again</span>
+                            <span class="buy-again-success">✓ Added</span>
+                        </button>
+                    </div>
+                    <div class="product-action">
+                        <button class="track-package-button">Track package</button>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>

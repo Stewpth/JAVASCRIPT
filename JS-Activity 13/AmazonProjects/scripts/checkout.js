@@ -13,11 +13,11 @@ async function loadPage() {
     await Promise.all([
         loadProductsFetch(),
         loadCartFetch()
-    ]);
-
-    updateSummaryOrder(cart);
-    updateSummaryPayment(cart);
-    renderCheckoutHeader(cart);
+    ]).then(() => {
+        updateSummaryOrder(cart);
+        updateSummaryPayment(cart);
+        renderCheckoutHeader(cart);
+    });
 }
 
 loadPage();

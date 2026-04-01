@@ -45,7 +45,7 @@ async function renderOrderList() {
                     ${renderProductsOrderList(orderList)}
                 </div>
             </article>
-        `
+        `;
     });
 
     document.querySelector('.js-orders-grid').innerHTML = orderHTML;
@@ -94,7 +94,7 @@ function renderProductsOrderList(orderList) {
                 </button>
             </div>
             <div class="product-action">
-                <a href="tracking.html">
+                <a href="tracking.html?orderId=${orderList.id}&productId=${productId}">
                     <button class="track-package-button js-track-package-button"
                     data-product-id="${matchingProduct.productId}">
                         Track package

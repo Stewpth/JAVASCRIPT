@@ -2,6 +2,7 @@ import { orders } from "../data/orders.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { formatCurrency } from "./utils/money.js";
 import { getProduct, loadProductsFetch } from "../data/products.js";
+import { cart } from "../data/cart-class.js";
 
 async function renderOrderList() {
     await loadProductsFetch();
@@ -48,6 +49,16 @@ async function renderOrderList() {
     });
 
     document.querySelector('.js-orders-grid').innerHTML = orderHTML;
+
+    // We can use DOM after we render the order details.
+    document.querySelectorAll(`.js-buy-again-button`).forEach((button) => {
+        button.addEventListener('click', () => {
+            const productId = button.dataset.productId;
+            cart.addToCart(productId);
+            updateCartQuantity();
+        });
+    });
+    
 }
 
 // Load the products
@@ -68,7 +79,8 @@ function renderProductsOrderList(orderList) {
                 <span class="product-name">${matchingProduct.name}</span>
                 <span class="product-delivery-date">Delivered on: ${formattedOrderDate}</span>
                 <span class="product-quantity">Quantity: ${productDetails.quantity}</span>
-                <button class="buy-again-button">
+                <button class="buy-again-button js-buy-again-button"
+                data-product-id="${matchingProduct.productId}">
                     <img src="images/Function-Img/buy-again.png" alt="buy-again-button" class="buy-again-logo">
                     <span class="buy-again-message buy-again-text">Buy it again</span>
                     <span class="buy-again-success
@@ -79,12 +91,21 @@ function renderProductsOrderList(orderList) {
                 <button class="track-package-button">Track package</button>
             </div>
         `;
-
-        console.log(matchingProduct);
-        console.log(productDetails);
-        console.log(dayjs(productDetails.estimatedDeliveryTime));
     });
 
-    
     return orderedProductsHTML;
+}
+
+// this function have duplication from amazon.js
+// i dont know why that gives an error when i export that
+// and use that function so i copy that code and put it here and now 
+// everything is works
+function updateCartQuantity() {
+    const cartQuantity = cart.calculateCartQuantity();
+
+    document.querySelector('.js-cart-quantity')
+        .innerHTML = cartQuantity;
+
+    document.querySelector('.js-cart-quantity-mobile')
+        .innerHTML = cartQuantity;
 }

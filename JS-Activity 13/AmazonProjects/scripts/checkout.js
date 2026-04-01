@@ -10,14 +10,23 @@ import { loadProducts, loadProductsFetch } from "../data/products.js";
 
 // When you use the Promise. you dont need to make a new Promise on fetched value.
 async function loadPage() {
-    await Promise.all([
-        loadProductsFetch(),
-        loadCartFetch()
-    ]).then(() => {
-        updateSummaryOrder(cart);
-        updateSummaryPayment(cart);
-        renderCheckoutHeader(cart);
-    });
+    await loadProductsFetch();
+    await loadCartFetch();
+
+    updateSummaryOrder(cart);
+    updateSummaryPayment(cart);
+    renderCheckoutHeader(cart);
+
+    /*
+        await Promise.all([
+            loadProductsFetch(),
+            loadCartFetch()
+        ]).then(() => {
+            updateSummaryOrder(cart);
+            updateSummaryPayment(cart);
+            renderCheckoutHeader(cart);
+        });
+    */
 }
 
 loadPage();

@@ -6,22 +6,26 @@ function saveToLocalStorage(orderKey) {
 
 export async function postOrder(cart) {
     try {
-        const response = await fetch('https://supersimplebackend.dev/orders', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                cart: cart
-            })
-        });
+        if (cart.length === 0) {
+            throw 'cart is empty'
+        } else { 
+            const response = await fetch('https://supersimplebackend.dev/orders', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    cart: cart
+                })
+            });
 
-        const order = await response.json();
-        addOrder(order);
+            const order = await response.json();
+            addOrder(order);
 
-        window.location.href = 'orders.html';
-
+            window.location.href = 'orders.html';
+        }
     } catch(error) {
+        console.log(error);
         console.log('Unexpected Error, Please try again later.');
     }
     
@@ -30,4 +34,8 @@ export async function postOrder(cart) {
 function addOrder(order) {
     orders.unshift(order);
     saveToLocalStorage(orders);
+}
+
+if (orders.errorMessage) {
+
 }

@@ -77,8 +77,19 @@ export class Appliance extends Product {
     }
 }
 
+/*
+export class OrderedProducts extends Product {
+    constructor(productDetails) {
+        this.productId = productDetails.productId;
+        this.name = productDetails.name;
+        this.quantity = productDetails.quantity;
+    }
+}
+*/
+
 export let products = [];
 
+// We use loadProductsFetch because that is better than loadProducts
 export function loadProducts(fun) {
     const xhr = new XMLHttpRequest();
 
@@ -102,9 +113,7 @@ export function loadProducts(fun) {
 }
 
 export function loadProductsFetch() {
-    const promise = fetch('https://supersimplebackend.dev/products');
-
-    promise.then((response) => {
+    const promise = fetch('https://supersimplebackend.dev/products').then((response) => {
         return response.json();
     }).then((productsData) => {
         products = productsData.map((productDetails) => {

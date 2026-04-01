@@ -59,6 +59,12 @@ async function renderOrderList() {
         });
     });
     
+    document.querySelectorAll(`.js-track-package-button`).forEach((link) => {
+        link.addEventListener('click', () => {
+            const productId = link.dataset.productId;
+            console.log(`clicked: ${productId}`);
+        });
+    });
 }
 
 // Load the products
@@ -88,7 +94,12 @@ function renderProductsOrderList(orderList) {
                 </button>
             </div>
             <div class="product-action">
-                <button class="track-package-button">Track package</button>
+                <a href="tracking.html">
+                    <button class="track-package-button js-track-package-button"
+                    data-product-id="${matchingProduct.productId}">
+                        Track package
+                    </button>
+                </a>
             </div>
         `;
     });

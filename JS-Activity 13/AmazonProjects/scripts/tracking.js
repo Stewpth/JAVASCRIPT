@@ -6,6 +6,8 @@ const url = new URL(window.location.href);
 const orderId = url.searchParams.get('orderId');
 const productId = url.searchParams.get('productId');
 
+const today = dayjs();
+
 async function renderTrackProduct() {
     await loadProductsFetch();
 
@@ -19,11 +21,18 @@ async function renderTrackProduct() {
         if (!matchingOrder) return;
 
         // Get the Estimated Date
-        const orderTime = dayjs(matchingOrder.estimatedDeliveryTime);
-        const formatEstimatedDeliveryDate = orderTime.format('MMMM D');
+        const deliveryTime = dayjs(matchingOrder.estimatedDeliveryTime);
+        const formatEstimatedDeliveryDate = deliveryTime.format('dddd, MMMM D');
 
         // Get the matched product using productId
         const matchingProduct = getProduct(matchingOrder.productId);
+
+        //const progressTime = ((deliveryTime - today) / (deliveryTime - matchingOrder.orderTime)) * 100;
+        const progressTime = Math.min(100, Math.max(0,
+            (today.diff(matchingOrder.orderTime) /
+            deliveryTime.diff(matchingOrder.orderTime)) * 100
+        ));
+
         productProgressHTML += `
             <span class="delivery-date">Delivered on ${formatEstimatedDeliveryDate}</span>
             <span class="product-name">${matchingProduct.name}</span>
@@ -35,15 +44,16 @@ async function renderTrackProduct() {
                 <span class="progress-label progress-status">Delivered</span>
             </div>
             <div class="progress-bar-container">
-                <div class="progress-bar"></div>
+                <div class="progress-bar" style="width: 50%"></div>
             </div>
         `;
+
+        console.log(today);
+        console.log(progressTime);
     });
     
     document.querySelector('.js-tracking-products').innerHTML = productProgressHTML;
 }
 
 renderTrackProduct();
-
-
 

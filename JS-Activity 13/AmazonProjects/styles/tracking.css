@@ -62,4 +62,9 @@ main.main-content {
 
 .progress-bar {
   background-color: green;
+  height: 100%;
+  border-radius: 50px;
+
+  width: 0;
+  transition: width ease 1s;
 }

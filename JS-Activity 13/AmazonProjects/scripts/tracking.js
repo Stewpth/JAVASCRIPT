@@ -6,8 +6,6 @@ const url = new URL(window.location.href);
 const orderId = url.searchParams.get('orderId');
 const productId = url.searchParams.get('productId');
 
-const today = dayjs();
-
 async function renderTrackProduct() {
     await loadProductsFetch();
 
@@ -20,18 +18,16 @@ async function renderTrackProduct() {
         // so we will skip the not matched product.
         if (!matchingOrder) return;
 
-        // Get the Estimated Date
+        // Get the date
+        const today = dayjs();
+        const orderTime = dayjs(orderList.orderTime);
         const deliveryTime = dayjs(matchingOrder.estimatedDeliveryTime);
         const formatEstimatedDeliveryDate = deliveryTime.format('dddd, MMMM D');
 
         // Get the matched product using productId
         const matchingProduct = getProduct(matchingOrder.productId);
 
-        //const progressTime = ((deliveryTime - today) / (deliveryTime - matchingOrder.orderTime)) * 100;
-        const progressTime = Math.min(100, Math.max(0,
-            (today.diff(matchingOrder.orderTime) /
-            deliveryTime.diff(matchingOrder.orderTime)) * 100
-        ));
+        const progressTime = ((today - orderTime) / (deliveryTime - orderTime)) * 100;
 
         productProgressHTML += `
             <span class="delivery-date">Delivered on ${formatEstimatedDeliveryDate}</span>
@@ -39,20 +35,37 @@ async function renderTrackProduct() {
             <span class="product-quantity">Quantity: ${matchingOrder.quantity}</span>
             <img src="${matchingProduct.img}" alt="product-image" class="product-image">
             <div class="progress-label-container">
-                <span class="progress-label">Preparing</span>
-                <span class="progress-label">Shipped</span>
-                <span class="progress-label progress-status">Delivered</span>
+                ${interactProgressLabel(progressTime)}
             </div>
             <div class="progress-bar-container">
-                <div class="progress-bar" style="width: 50%"></div>
+                <div class="progress-bar js-progress-bar" style="width: ${progressTime}%"></div>
             </div>
         `;
-
-        console.log(today);
-        console.log(progressTime);
     });
     
     document.querySelector('.js-tracking-products').innerHTML = productProgressHTML;
+}
+
+function interactProgressLabel(progressTime) {
+    if (progressTime >= 0 && progressTime <= 49) {
+        return `
+            <span class="progress-label current-progress">Preparing</span>
+            <span class="progress-label">Shipped</span>
+            <span class="progress-label">Delivered</span>
+        `
+    } else if (progressTime >= 50 && progressTime <= 99) {
+        return `
+            <span class="progress-label">Preparing</span>
+            <span class="progress-label current-progress">Shipped</span>
+            <span class="progress-label">Delivered</span>
+        `
+    } else {
+        return `
+            <span class="progress-label">Preparing</span>
+            <span class="progress-label">Shipped</span>
+            <span class="progress-label current-progress">Delivered</span>
+        `
+    }
 }
 
 renderTrackProduct();

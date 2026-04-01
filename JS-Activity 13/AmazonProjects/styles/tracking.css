@@ -60,6 +60,10 @@ main.main-content {
   overflow: hidden;
 }
 
+.current-progress {
+  color: rgb(6, 125, 98);
+}
+
 .progress-bar {
   background-color: green;
   height: 100%;

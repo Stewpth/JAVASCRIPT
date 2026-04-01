@@ -39,3 +39,15 @@ function addOrder(order) {
 if (orders.errorMessage) {
 
 }
+
+export function getOrder(orderList, orderId, productId) {
+    let matchingOrder;
+
+    orderList.products.forEach((orderedProduct) => {
+        if(orderId === orderList.id && productId === orderedProduct.productId) {
+            matchingOrder = orderedProduct;
+        }
+    });
+
+    return matchingOrder;
+}

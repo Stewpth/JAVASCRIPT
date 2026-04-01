@@ -75,9 +75,11 @@ function renderProductsOrderList(orderList) {
 
     orderList.products.forEach((productDetails) => {
         const productId = productDetails.productId;
+        const matchingProduct = getProduct(productId);
+
+        // Get the Estimated Date
         const orderTime = dayjs(productDetails.estimatedDeliveryTime);
         const formattedOrderDate = orderTime.format('MMMM D');
-        const matchingProduct = getProduct(productId);
 
         orderedProductsHTML +=  `
             <img src="${matchingProduct.img}" alt="item-image" class="item-image">
@@ -104,6 +106,7 @@ function renderProductsOrderList(orderList) {
         `;
     });
 
+    console.log(orderList);
     return orderedProductsHTML;
 }
 

@@ -7,6 +7,7 @@ export class Product {
     ratings;
     priceCents;
     type;
+    keywords;
 
     constructor(productDetails) {
         this.productId = productDetails.id;
@@ -15,6 +16,7 @@ export class Product {
         this.ratings = productDetails.rating;
         this.priceCents = productDetails.priceCents;
         this.type = productDetails.type;
+        this.keywords = productDetails.keywords;
     }
 
     getProductImg() {

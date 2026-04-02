@@ -1,14 +1,39 @@
 import { cart } from '../data/cart-class.js';
-import { products, loadProducts } from '../data/products.js';
+import { products, loadProducts, loadProductsFetch } from '../data/products.js';
+import { normalize } from './utils/search.js';
 
-loadProducts(renderProductsGrid);
-updateCartQuantity();
+//loadProducts(renderProductsGrid);
+loadPage();
 
-function renderProductsGrid() {
+async function loadPage() {
+    await loadProductsFetch();
+
+    const url = new URL(window.location.href);
+    const searchInput = url.searchParams.get('search');
+    const searchedProduct = returnSearchResult();
+
+    if (searchInput) {
+        renderProductsGrid(searchedProduct);
+    } else {
+        renderProductsGrid(products);
+    }
+
+    updateCartQuantity();
+}
+
+document.querySelector('.js-search-btn').addEventListener('click', () => {
+    const searchInput = document.querySelector('.js-search-bar');
+    const inputValue = searchInput.value;
+    const searchResult = inputValue.split(' ').join('+');
+    
+    window.location.href = `amazon.html?search=${searchResult}`;
+});
+
+function renderProductsGrid(loadedProducts) {
     let productHTML = '';
 
     // Generates the HTML for products and display it on the webpage. 
-    products.forEach((product) => {
+    loadedProducts.forEach((product) => {
         productHTML += 
             `<div class="product-box">
                     <div class="product-img-box">
@@ -93,4 +118,21 @@ function updateCartQuantity() {
 
     document.querySelector('.js-cart-quantity-mobile')
         .innerHTML = cartQuantity;
+}
+
+function returnSearchResult() {
+    const url = new URL(window.location.href);
+    const searchResult = normalize(url.searchParams.get('search'));
+
+    let result = [];
+
+    products.forEach((product) => {
+        product.keywords.forEach((keyword) => {
+            if (keyword.toLowerCase().includes(searchResult)) {
+                 result.push(product);
+            }
+        });
+    });
+
+    return result;
 }

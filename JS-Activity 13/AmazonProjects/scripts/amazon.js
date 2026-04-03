@@ -29,8 +29,31 @@ document.querySelector('.js-search-btn').addEventListener('click', () => {
     window.location.href = `amazon.html?search=${searchResult}`;
 });
 
+// This function is used to interact with shorting products
+function shortProduct(loadedProducts) {
+    // Short the products by alphabet from the lowest character to highest character (A- Z)
+    document.querySelector('.short-by-alphabet').addEventListener('click', () => {
+        loadedProducts.sort((a, b) => a.name.toLowerCase().localeCompare(b.name));
+        renderProductsGrid(loadedProducts);
+    });
+
+    // Short the products from the highest quality to lowest quality
+    document.querySelector('.short-by-rate').addEventListener('click', () => {
+        loadedProducts.sort((a, b) => b.ratings.stars - a.ratings.stars);
+        renderProductsGrid(loadedProducts);
+    });
+
+    // Short the products from the highest cost to lowest cost
+    document.querySelector('.short-by-price').addEventListener('click', () => {
+        loadedProducts.sort((a, b) => b.priceCents - a.priceCents);
+        renderProductsGrid(loadedProducts);
+    });
+}
+
 function renderProductsGrid(loadedProducts) {
     let productHTML = '';
+
+    shortProduct(loadedProducts);
 
     // Generates the HTML for products and display it on the webpage. 
     loadedProducts.forEach((product) => {
@@ -84,15 +107,14 @@ function renderProductsGrid(loadedProducts) {
     // We put this outside of the function to avoid duplicating variables
     const msgAddedId = {};
 
-    document.querySelectorAll('.js-add-to-cart-btn')
-        .forEach((button) => {
-            button.addEventListener('click', () => {
-                const { productId } = button.dataset; 
-                cart.addToCart(productId);
-                updateCartQuantity();
-                displayAddedMsg(msgAddedId, productId);
-            });
+    document.querySelectorAll('.js-add-to-cart-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+            const { productId } = button.dataset; 
+            cart.addToCart(productId);
+            updateCartQuantity();
+            displayAddedMsg(msgAddedId, productId);
         });
+    });
 }
 
 function displayAddedMsg(msgAddedId, productId) {

@@ -305,16 +305,65 @@
     border: none;
     padding-left: 10px;
     padding-right: 10px;
-    /*width: 45px;
+    /*width: 45px;*/
+
     height: 40px;
-    */
     flex-shrink: 0;
     margin-left: -2px;
     cursor: pointer;
   }
 
   .short-menu-dropdown {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    top: 60px;
+    left: 0;
+    right: 0;
+
+    background-color: rgb(19, 25, 33);
+
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    z-index: 100;
+
+    /* For toggle animation effects */
+    overflow: hidden;
+    height: 0px;
+    transition: height 0.25s;
+    pointer-events: none;
+  }
+
+  .short-menu-dropdown.open {
+    /* Toggled */
+    pointer-events: auto;
+    height: 135px;
+  }
+
+  .option-title {
+    color: rgb(255, 234, 0);
+    text-align: start;
+    width: 85%;
+    padding: 5px;
+    font-weight: 500;
+  }
+
+  .option-style {
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    border: 2px solid transparent;
+    font-weight: 500;
+  }
+
+  .option-style:hover {
+    background-color: rgb(38, 49, 61);
   }
 
   .search-bar {

@@ -31,22 +31,27 @@ document.querySelector('.js-search-btn').addEventListener('click', () => {
 
 // This function is used to interact with shorting products
 function shortProduct(loadedProducts) {
+    const shortDropDown = document.querySelector('.js-short-menu-dropdown');
+
     // Short the products by alphabet from the lowest character to highest character (A- Z)
     document.querySelector('.short-by-alphabet').addEventListener('click', () => {
         loadedProducts.sort((a, b) => a.name.toLowerCase().localeCompare(b.name));
         renderProductsGrid(loadedProducts);
+        shortDropDown.classList.remove('open');
     });
 
     // Short the products from the highest quality to lowest quality
     document.querySelector('.short-by-rate').addEventListener('click', () => {
         loadedProducts.sort((a, b) => b.ratings.stars - a.ratings.stars);
         renderProductsGrid(loadedProducts);
+        shortDropDown.classList.remove('open');
     });
 
     // Short the products from the highest cost to lowest cost
     document.querySelector('.short-by-price').addEventListener('click', () => {
         loadedProducts.sort((a, b) => b.priceCents - a.priceCents);
         renderProductsGrid(loadedProducts);
+        shortDropDown.classList.remove('open');
     });
 }
 

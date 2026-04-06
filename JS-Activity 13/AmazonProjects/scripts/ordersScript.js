@@ -21,7 +21,7 @@ async function renderOrderList() {
         const formattedOrderDate = orderTime.format('MMMM D');
 
         orderHTML += `
-            <article class="order-container">
+            <article class="order-container" data-order-id="order-container-${orderId}">
                 <header class="order-headers">
                     <section class="left-header-side">
                         <div class="order-date">

@@ -28,8 +28,9 @@ export async function postOrder(cart) {
         console.log(error);
         console.log('Unexpected Error, Please try again later.');
     }
-    
 }
+
+
 
 function addOrder(order) {
     orders.unshift(order);
@@ -51,3 +52,4 @@ export function getOrder(orderList, orderId, productId) {
 
     return matchingOrder;
 }
+

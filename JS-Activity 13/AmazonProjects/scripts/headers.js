@@ -10,6 +10,12 @@ function toggleMobileMenu() {
     toggleBtn.addEventListener('click', () => {
         dropdown.classList.toggle('open');
 
+        // In other pages. the shortdropdown doesnt appear. i intent to
+        // dont put that feature because it's for amazon page only.
+        if (!shortDropDown) {
+            return
+        }
+
         if (shortDropDown.classList.contains('open')) {
             shortDropDown.classList.remove('open');
         }
@@ -21,6 +27,12 @@ function openShortMenu() {
     const shortDropDown = document.querySelector('.js-short-menu-dropdown');
 
     const dropdown = document.querySelector('.js-hamburger-menu-dropdown');
+
+    // In other pages. the shortdropdown doesnt appear. i intent to
+        // dont put that feature because it's for amazon page only.
+    if (!shortBtn && !shortDropDown) {
+        return
+    }
 
     shortBtn.addEventListener('click', () => {
         shortDropDown.classList.toggle('open');

@@ -29,6 +29,31 @@
   width: 100px;
 }
 
+.homepage-logo-mobile-pic {
+  display: none;
+}
+
+@media (max-width: 570px) {
+  .left-section {
+    width: auto;
+  }
+
+  .homepage-logo {
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .homepage-logo-pic {
+    display: none;
+  }
+
+  .homepage-logo-mobile-pic {
+    display: flex;
+    height: 35px;
+  }
+}
+
 .middle-section {
   max-width: 800px;
   display: flex;
@@ -55,6 +80,12 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+@media (max-width: 570px) {
+  .right-section {
+    width: auto;
+  }
 }
 
 .checkout-lock-icon {

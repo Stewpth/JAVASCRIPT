@@ -5,6 +5,8 @@ export function renderCheckoutHeader(cartName) {
         <section class="left-section">
             <a href="amazon.html" class="homepage-logo">
                 <img src="images/header-image/amazon-logo.png" alt="homepage-logo" class="homepage-logo-pic">
+                <img src="images/header-image/amazon-mobile-logo.png" alt="homepage-logo-mobile"
+                    class="homepage-logo-mobile-pic">
             </a>
         </section>
         <section class="middle-section">

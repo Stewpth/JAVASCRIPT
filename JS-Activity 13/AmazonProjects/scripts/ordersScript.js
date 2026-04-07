@@ -9,6 +9,15 @@ async function renderOrderList() {
 
     let orderHTML = '';
 
+    if (orders.length === 0) {
+        orderHTML = `
+            <p class="empty-order-message">You don't have order yet.</p>
+            <p class="empty-order-message">Go to amazon page</p>
+
+            <a href="amazon.html" class="amazon-link">View Products</a>
+        `;
+    }
+
     orders.forEach((orderList) => {
         // We made the error mistake so when the error message.
         // the error message skip.
@@ -106,7 +115,6 @@ function renderProductsOrderList(orderList) {
         `;
     });
 
-    console.log(orderList);
     return orderedProductsHTML;
 }
 

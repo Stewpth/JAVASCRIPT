@@ -28,6 +28,29 @@ article.order-container {
   flex-direction: column;
 }
 
+.empty-order-message-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-order-message {
+  margin-top: 10px;
+}
+
+.empty-order-link {
+  display: inline-block;
+  text-decoration: none;
+  max-width: 103px;
+  margin-top: 10px;
+  color: rgb(33, 33, 33);
+  background-color: rgb(255, 216, 20);
+  border: 1px solid rgb(252, 210, 0);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  padding: 8px 15px;
+}
+
 @media (min-width: 801px) {
   header.order-headers {
     background-color: rgb(240, 242, 242);

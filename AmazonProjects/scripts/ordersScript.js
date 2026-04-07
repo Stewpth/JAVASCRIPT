@@ -11,10 +11,11 @@ async function renderOrderList() {
 
     if (orders.length === 0) {
         orderHTML = `
-            <p class="empty-order-message">You don't have order yet.</p>
-            <p class="empty-order-message">Go to amazon page</p>
-
-            <a href="amazon.html" class="amazon-link">View Products</a>
+            <div class="empty-order-message-container">
+                <span class="empty-order-message">You don't have order yet.</span>
+                <span class="empty-order-message">Go to amazon page</span>
+                <a href="amazon.html" class="empty-order-link">View Products</a>
+            </div>
         `;
     }
 

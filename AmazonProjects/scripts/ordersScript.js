@@ -106,7 +106,7 @@ function renderProductsOrderList(orderList) {
                 </button>
             </div>
             <div class="product-action">
-                <a href="tracking.html?orderId=${orderList.id}&productId=${productId}">
+                <a href="tracking.html?orderId=${orderList.id}&productId=${productId}" class="track-package-link">
                     <button class="track-package-button js-track-package-button"
                     data-product-id="${matchingProduct.productId}">
                         Track package

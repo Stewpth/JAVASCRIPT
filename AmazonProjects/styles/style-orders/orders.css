@@ -229,6 +229,10 @@ div.order-details-grid {
   }
 }
 
+.track-package-link {
+  text-decoration: none;
+}
+
 .track-package-button {
   width: 100%;
   padding: 8px;

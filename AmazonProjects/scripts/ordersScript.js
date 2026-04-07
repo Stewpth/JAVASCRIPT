@@ -14,7 +14,7 @@ async function renderOrderList() {
             <div class="empty-order-message-container">
                 <span class="empty-order-message">You don't have order yet.</span>
                 <span class="empty-order-message">Go to amazon page</span>
-                <a href="amazon.html" class="empty-order-link">View Products</a>
+                <a href="index.html" class="empty-order-link">View Products</a>
             </div>
         `;
     }

@@ -26,7 +26,7 @@ document.querySelector('.js-search-btn').addEventListener('click', () => {
     const inputValue = searchInput.value;
     const searchResult = inputValue.split(' ').join('+');
     
-    window.location.href = `amazon.html?search=${searchResult}`;
+    window.location.href = `index.html?search=${searchResult}`;
 });
 
 // This function is used to interact with shorting products

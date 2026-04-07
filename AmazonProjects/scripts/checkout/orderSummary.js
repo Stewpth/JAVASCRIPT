@@ -12,7 +12,7 @@ export function updateSummaryOrder(cartName) {
         cartSummaryHTML = `
             <div class="empty-cart-message-container">
                 <span class="empty-cart-message">Your cart is empty.</span>
-                <a href="amazon.html" class="empty-cart-link">View products</a>
+                <a href="index.html" class="empty-cart-link">View products</a>
             </div>
         `;
     } else {

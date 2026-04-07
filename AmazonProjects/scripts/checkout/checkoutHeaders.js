@@ -3,7 +3,7 @@ export function renderCheckoutHeader(cartName) {
 
     const headerHTML = `
         <section class="left-section">
-            <a href="amazon.html" class="homepage-logo">
+            <a href="index.html" class="homepage-logo">
                 <img src="images/header-image/amazon-logo.png" alt="homepage-logo" class="homepage-logo-pic">
                 <img src="images/header-image/amazon-mobile-logo.png" alt="homepage-logo-mobile"
                     class="homepage-logo-mobile-pic">
@@ -12,7 +12,7 @@ export function renderCheckoutHeader(cartName) {
         <section class="middle-section">
             <span class="checkout-text">
                 Checkout 
-                    (<a href="amazon.html"class="item-quantity js-item-quantity">${cartQuantity} items</a>)
+                    (<a href="index.html" class="item-quantity js-item-quantity">${cartQuantity} items</a>)
             </span>
         </section>
         <section class="right-section">

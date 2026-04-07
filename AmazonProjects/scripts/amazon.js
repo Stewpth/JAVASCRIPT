@@ -97,7 +97,7 @@ function renderProductsGrid(loadedProducts) {
                     </div>
 
                     <div class="added-to-cart-msg js-added-to-cart-msg-id-${product.productId}">
-                        <img src="images/Function-img/checkmark.png" class="added-icon">
+                        <img src="/JAVASCRIPT/AmazonProjects/images/Function-Img/checkmark.png" class="added-icon">
                         Added
                     </div>
                     <div class="add-to-cart-box">
@@ -108,6 +108,8 @@ function renderProductsGrid(loadedProducts) {
                     </div>
                 </div>`
     });
+
+    // <img src="images/Function-img/checkmark.png" class="added-icon">
 
     document.querySelector('.js-products-grid').innerHTML = productHTML;
 
